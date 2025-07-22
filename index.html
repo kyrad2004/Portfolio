@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyra Dang Portolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--NAVBAR-->
+    <nav>
+        <div class="left">
+            <a href="/">Kyra Dang</a>
+        </div>
+        <div class="right">
+            <a href="https://github.com/kyrad2004" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span>Github</span>
+            </a>
+
+            <a href="http://linkedin.com/in/kyra-dang " target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="mailto:ktbdang04@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <!--SECTION 1: HERO/DESCRIPTION-->
+        <section class="hero-section">
+            <div class="text">
+                <h2>Hi, I'm Kyra 👋</h2>
+                <p>I am rising Junior at The University of Washington, Seattle studying Electrical and Computer Engineering. I am especially passionate about accessible and adaptive technology, with a focus in medical devices. In my free time, I love running, baking, and trying new foods! </p>
+
+                <div class="links">
+                    <a href="#Skills">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Skills</span>
+                    </a>
+
+                    <a href="#Projects">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>Projects</span>
+                    </a>
+
+                    <a href="#Experience">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Experience</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="headshot">
+                <img src="images/hero-headshot.webp" alt="Kyra Dang headshot">
+
+            </div>
+
+        </section>
+
+        <!--SECTION 2: SKILLS-->
+        <section id="Skills" class="skills-section">
+            <h2>Skills</h2>
+            <div class="text">
+                I have a strong background and understanding in Java, JavaScript, Python, System Verilog, HTML, and CSS. I am also familiar with C++ as used in Arduino. <br>
+                <p><br></p>
+                <p>
+                    Relevant Coursework (Through Fall 2025): Computer Programming (II/III) • Mechanics • Electromagnetism • Engineering Leadership • Computer Hardware Skills • Fundamentals of Electrical Engineering  • Digital Circuits and Systems • Programming for Signal and Information Processing Applications • Signal Processing • Signals, Systems and Data I• Data Structures and Algorithms • Neural Engineering • Circuit Theory • Introduction to Foundations of Machine Learning
+                </p>
+
+            </div>
+
+            <div class="cells">
+                <div class="cell">
+                    <img src="images/java.webp" alt="Java Logo">
+                    <span>Java</span>
+                </div>
+            
+                <div class="cell">
+                    <img src="images/javascript.webp" alt="JavaScript Logo">
+                    <span>JavaScript</span>
+                </div>
+
+                <div class="cell">
+                    <img src="images/python.webp" alt="Python Logo">
+                    <span>Python</span>
+                </div>
+
+                <div class="cell">
+                    <img src="images/verilog.webp" alt="System Verilog Logo">
+                    <span>System Verilog</span>
+                </div>
+
+                <div class="cell">
+                    <img src="images/html.webp" alt="HTML Logo">
+                    <span>HTML</span>
+                </div>
+
+                <div class="cell">
+                    <img src="images/css.webp" alt="CSS Logo">
+                    <span>CSS</span>
+                </div>
+            </div>
+        </section>
+
+        <!--SECTION 3: PROJECTS-->
+        <section id="Projects" class="project-section">
+            <h2>Projects</h2>
+
+            <div class="group">
+                <div class="project-details">
+                    <img src="images/project1.webp" alt="Photo of DE1SoC Board">
+                    <div class="overlay-text">
+                        <h3>De1SoC Frogger Project</h3>
+                        <p>My final project for EE271: Digital Circuits and Systems</p>
+                        <div class="hover-text">
+                            EE 271 is "Digital Circuits and Systems" at the University of Washington. The class covers logic gates and digital design, and has weekly labs to expose students to FPGAs and digital design in practice. For our final lab, we were given a choice of projects to build---I chose "Frogger." The game was designed for the Altera DE1 FPGA development board. Utilizing SystemVerilog and ModelSim to build and test my code, I created an interactive game where the user must get their green light to the end of the board without hitting the moving red cars on the light display. The user moves by using the buttons on the De1, the "player screen" is displayed using a 16x16 Bi-Color LED Array Board-segment display, and the outcome of the game was shown on the 7-segment display.
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="project-details">
+                    <img src="images/robot.webp" alt="Photo of Line Following Robot">
+                    <div class="overlay-text">
+                        <h3>Arudino Line-Following Robot</h3>
+                        <p>My final project for EE201: Computer Hardware Skills</p>
+                        <div class="hover-text">
+                            Utilizing Arduino Uno, group-designed PCB, 3D Printed Chassis, and soldering, I worked in a group of four to create a line-following robot. We used Fusion360 and PrusaSlice to design and print the chassis and casing for our robot. We used KiCad to design and personalize our PCB board, and an Arduino Uno to program movement. Using a basic understanding of photoresistors and tracking abilities, we applied basic circuitry and hardware skills to create a robot that completed a line course, placing within the top 13 of the entire course.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="project-details">
+                    <img src="images/thirdeye.webp" alt="Photo of Third Eye for the Blind">
+                    <div class="overlay-text">
+                        <h3>Third Eye for the Blind</h3>
+                        <p>My final project for EE201: Computer Hardware Skills</p>
+                        <div class="hover-text">
+                            As a passion project for a Summer program, I designed a wearable "Third Eye for the Blind". This device is worn on the hand and utilizes ultrasonic sensors to determine proximity of nearby objects as well as a thermistor to sense the temperature of nearby objects. Using a vibrating motor and a buzzer, the user is given physical and audible cues on their surroundings to help them better navigate their surroundings.
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+
+        </section>
+
+        <!--SECTION 4: EXPERIENCE-->
+        <section id="Experience" class="experience-section">
+            <h2>Experience</h2>
+            <div class="group">
+                <h4>Undergraduate Student Researcher</h4>
+                <p>
+                    San Francisco State University, Personal Health and Assistive Technologies (PHAST) Lab
+                    <span style="margin-left: 430px;">June 2025-Present</span>
+                </p>
+                <p>San Francisco, California</p>
+                <pr><br></pr>
+                <p>As a research assistant in Dr. Alyssa Kubota's PHAST Lab, I contribute to R&D for the lab’s Alternative and Augmentative Communication (AAC) Project. My literature review work supported a submission to the American Speech-Language-Hearing Association (ASHA) convention. I also collaborated closely with an on-site speech-language pathologist (SLP) to explore integration of Dr. Kubota’s prior research on Cognitively Assistive Robots with current AAC devices.</p>
+
+                <p><br></p>
+
+                <h4>Executive Board Member </h4>
+                <p>
+                    HuskyADAPT
+                    <span style="margin-left: 980px;">September 2023-Present</span>
+                </p>
+                <p>Seattle, Washington</p>
+                <pr><br></pr>
+                <p>As a long-time member of HuskyADAPT, I’ve participated in adaptive toy events, where we rewire toys to connect with universal headphone jacks for use with various assistive switches. These adapted toys are distributed locally and nationally to support children with disabilities. In 2024–2025, I served as the Junior Toy Adaptation Chair, leading weekly meetings to repair broken adapted toys and ensure donation quality. In 2025–2026, I transitioned into the Toy Donation Chair role, where I coordinate with local clinics and schools to deliver adapted toys and strengthen community partnerships.<p>
+            </div>
+
+            <p><br></p>
+
+            <h4>Volunteer</h4>
+                <p>
+                    GoBabyGo
+                    <span style="margin-left: 1020px;">January 2024-Present</span>
+                </p>
+                <p>Seattle, Washington</p>
+                <pr><br></pr>
+                <p>UW GoBabyGo modifies battery operated, ride-on cars to meet the specific needs of each child in order to provide mobility and socialization for children with limited motor function. As a volunteer, I collaborated in a team of 5 to build, enhance, and adapt a ride-in-car with universal switch and custom framing and safety features based on patient’s needs. I also helped communicate with families and healthcare providers to ensure a safe and efficient transitions</p>
+            </div>
+
+            <p><br></p>
+
+            <h4>Lead Instructor</h4>
+                <p>
+                    TechKnowHow
+                    <span style="margin-left: 1020px;">June 2024-Present</span>
+                </p>
+                <p>San Francisco, California</p>
+                <pr><br></pr>
+                <p>I began as an assistant instructor in Summer 2024 and advanced to lead instructor in Summer 2025 for TechKnowHow’s STEM camps. I taught classes of up to 20 students, guiding them through hands-on projects in LEGO engineering, Scratch programming, and Minecraft modding. I aimed to foster student interest in STEM while strengthening my own skills in teaching, leadership, and curriculum delivery.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    
+</body>
+</html>
