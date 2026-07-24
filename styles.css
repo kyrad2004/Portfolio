@@ -44,6 +44,11 @@ nav .left a{
 nav .right a{
     color: var(--text-color);
     margin: 0 10px;
+    transition: color .15s ease;
+}
+
+nav .right a:hover {
+    color: var(--link-color);
 }
 
 nav .right a:last-child {
@@ -51,6 +56,12 @@ nav .right a:last-child {
     background-color: var(--text-color);
     padding: 5px 15px;
     border-radius: 5px;
+    transition: opacity .15s ease;
+}
+
+nav .right a:last-child:hover {
+    color: var(--background-color);
+    opacity: 0.8;
 }
 
 nav .right a span {
@@ -140,6 +151,13 @@ nav .right a span {
     margin: 20px;
     border: 1.5px solid #d3d3d3;
     border-radius: 5px;
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.skills-section .cells .cell:hover {
+    border-color: var(--link-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .skills-section .cells .cell img{
@@ -179,41 +197,48 @@ nav .right a span {
     flex: 2;
 }
 
-.project-section .group .project-details .overlay-text{
+.project-section .group .project-details .overlay-text {
     position: relative;
+    width: 300px;
+    aspect-ratio: 1/1;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.project-section .group .project-details .overlay-text img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
 }
 
 .project-section .group .project-details .hover-text {
     position: absolute;
-    top: 0;
-    left: 0;
-    /* width: 100%;
-    height: 100%; */
-    background: rgba(110, 3, 94, 0.85); /* dark magenta overlay */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(110, 3, 94, 0.9); /* dark magenta overlay */
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 25px;
     text-align: center;
+    font-size: 12.5px;
+    line-height: 1.4;
+    overflow-y: auto;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-}
-.project-section .group .project-details img {
-    width: 300px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    flex-direction: column;
-    display: block;
-    margin: auto
+    cursor: default;
 }
 
-.project-section .group .project-details:hover .hover-text {
+.project-section .group .project-details:hover .hover-text,
+.project-section .group .project-details:focus-within .hover-text {
     opacity: 1;
-} 
+}
 
 .project-section .group .project-details p {
     /* font-weight: 600; */
@@ -238,6 +263,67 @@ nav .right a span {
 
 .experience-section h2{
     font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.experience-section h2:not(:first-child) {
+    margin-top: 50px;
+}
+
+.experience-section .group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.experience-section .entry {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #d3d3d3;
+    transition: transform .15s ease;
+}
+
+.experience-section .entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.experience-section .entry:hover {
+    transform: translateX(4px);
+}
+
+.experience-section .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+}
+
+.experience-section .entry-header h4 {
+    font-size: 18px;
+}
+
+.experience-section .date {
+    color: #666;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.experience-section .entry-sub {
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.experience-section .location {
+    color: #777;
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.experience-section .description {
+    line-height: 1.6;
+    font-size: 15px;
 }
 
 
@@ -314,8 +400,13 @@ nav .right a span {
     }
 
     /* Section 3: Projects */
-    .projet-section .group {
+    .project-section .group {
         padding: 0 20px;
+    }
+
+    .experience-section .entry-header {
+        flex-direction: column;
+        gap: 2px;
     }
 
     /* Section 4: Contacts */

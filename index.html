@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyra Dang Portolio</title>
+    <title>Kyra Dang Portfolio</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,11 @@
                 <span>LinkedIn</span>
             </a>
 
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Resume</span>
+            </a>
+
             <a href="mailto:ktbdang04@gmail.com">
                 <i class="fa-solid fa-envelope"></i>
                 <span>Email</span>
@@ -42,7 +47,7 @@
             <div class="text">
                 <h2>Hi, I'm Kyra 👋</h2>
                 <h4>Electrical and Computer Engineering Student focused on embedded systems, signal processing, and assistive technologies</h4>
-                <p> I am a junior at the University of Washington, Seattle studying Electrical and Computer Engineering (ECE) I am driven by engineering systems where thoughtful design, reliability, and innovation directly impact user quality of life. Through hands-on projects and research in assistive and healthcare technologies, I have developed a strong foundation in hardware design, embedded systems, and signal processing.</p>
+                <p> I am a junior at the University of Washington, Seattle studying Electrical and Computer Engineering (ECE). I am driven by engineering systems where thoughtful design, reliability, and innovation directly impact user quality of life. Through hands-on projects and research in assistive and healthcare technologies, I have developed a strong foundation in hardware design, embedded systems, and signal processing.</p>
 
                 <p><br></p>
 
@@ -66,6 +71,11 @@
                     <a href="#Experience">
                         <i class="fa-solid fa-envelope"></i>
                         <span>Experience</span>
+                    </a>
+
+                    <a href="resume.pdf" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span>Resume</span>
                     </a>
                 </div>
             </div>
@@ -133,41 +143,38 @@
 
             <div class="group">
                 <div class="project-details">
-                    <img src="images/project1.webp" alt="Photo of DE1SoC Board">
                     <div class="overlay-text">
-                        <h3>De1SoC Frogger Project</h3>
-                        <p>My final project for EE271: Digital Circuits and Systems</p>
+                        <img src="images/project1.webp" alt="Photo of DE1SoC Board">
                         <div class="hover-text">
-                            In my digital circuits coure, I worked individually to design an interactive Frogger game implemented on a De1-SoC FPGA. The challenge was to build a reliable real-time digital system using finite state machines while handling user inputs and timing controls. I was responsible for designing and implementing the game's core logic, timing controllers, and input handling. The goal was to ensure smooth gameplay, accurate state transitions, and reliable button input. I designed the system's architecture using a multiple FSM approach to separate game logic and input debouncing. I implemented timing controllers to sychronize the game board and player movement and added debouncing logic to eliminate false button triggers. To validate the correctness of my SystemVerilog system,  I wrote testbenches in ModelSim and iteratively simulated each module before integrating the full system in Quartus Prime. The final design passed 100% of simulation test cases and functioned reliably without missed inputs. The project strengthened my skills in FPGA design, verification, and debugging, as well as gave me hands-on experience building a real-time digital system.
+                            In my digital circuits course, I worked individually to design an interactive Frogger game implemented on a De1-SoC FPGA. The challenge was to build a reliable real-time digital system using finite state machines while handling user inputs and timing controls. I was responsible for designing and implementing the game's core logic, timing controllers, and input handling. The goal was to ensure smooth gameplay, accurate state transitions, and reliable button input. I designed the system's architecture using a multiple FSM approach to separate game logic and input debouncing. I implemented timing controllers to synchronize the game board and player movement and added debouncing logic to eliminate false button triggers. To validate the correctness of my SystemVerilog system, I wrote testbenches in ModelSim and iteratively simulated each module before integrating the full system in Quartus Prime. The final design passed 100% of simulation test cases and functioned reliably without missed inputs. The project strengthened my skills in FPGA design, verification, and debugging, as well as gave me hands-on experience building a real-time digital system.
                         </div>
                     </div>
+                    <h3>De1SoC Frogger Project</h3>
+                    <p>My final project for EE271: Digital Circuits and Systems</p>
                 </div>
 
-
-
                 <div class="project-details">
-                    <img src="images/robot.webp" alt="Photo of Line Following Robot">
                     <div class="overlay-text">
-                        <h3>Arudino Line-Following Robot</h3>
-                        <p>My final project for EE201: Computer Hardware Skills</p>
+                        <img src="images/robot.webp" alt="Photo of Line Following Robot">
                         <div class="hover-text">
-                            As a part of my hardware fundamentals course, my team was tasked with designing a line-following robot capable of reliably tracking a line course in real time. The system had to integrate sensors, control logic, and mechanical design while meeting strict performance requirements. I was tasked with the design of the embedded system and its sensor interface, PCB design, and control logic. Our group's goal was to achieve stable closed-loop control while ensuring robust sensor readings. I helped design a custom PCB in KiCad to integrate with line sensors with an Arduino microcontroller and implement closed-loop control logic to adjust motor outputs based on sensor feedback. I also contributed to mechanical design by modeling and fabricating a 3D-printed chassis in Fusion360. We iteratively tested and tuned our sensor thresholds and control parameters to improve tracking accuracy. Our robot achieved 100% course completion with consistent real-time tracking accuracy and ranked top 10 out of 40+ teams. This project reinforced my understanding of embedded firmware development, PCB design, and hardware-software integration.
+                            As a part of my hardware fundamentals course, my team was tasked with designing a line-following robot capable of reliably tracking a line course in real time. The system had to integrate sensors, control logic, and mechanical design while meeting strict performance requirements. I was tasked with the design of the embedded system and its sensor interface, PCB design, and control logic. Our group's goal was to achieve stable closed-loop control while ensuring robust sensor readings. I helped design a custom PCB in KiCad to integrate line sensors with an Arduino microcontroller and implement closed-loop control logic to adjust motor outputs based on sensor feedback. I also contributed to mechanical design by modeling and fabricating a 3D-printed chassis in Fusion360. We iteratively tested and tuned our sensor thresholds and control parameters to improve tracking accuracy. Our robot achieved 100% course completion with consistent real-time tracking accuracy and ranked top 10 out of 40+ teams. This project reinforced my understanding of embedded firmware development, PCB design, and hardware-software integration.
                         </div>
                     </div>
+                    <h3>Arduino Line-Following Robot</h3>
+                    <p>My final project for EE201: Computer Hardware Skills</p>
                 </div>
-
 
                 <div class="project-details">
-                    <img src="images/thirdeye.webp" alt="Photo of Third Eye for the Blind">
                     <div class="overlay-text">
-                        <h3>Third Eye for the Blind</h3>
-                        <p>My final project for EE201: Computer Hardware Skills</p>
+                        <img src="images/thirdeye.webp" alt="Photo of Third Eye for the Blind">
                         <div class="hover-text">
-                            I had a personal project where I was building a third eye for the blind, a wearable navigation aid to help visually impaired user detect their obstacles in real time. I designed a reliable, real time embedded system that could sense obstacles in the environment and communicate information to the user in an intuitive way. I integrated ultrasonic sensors, thermistors, and vibrating motors with an Arduino using C++ code to handle real time sensor data. I iteratively tested the device in different surroundings and refined placement and timing through experimentation. At the end of it, I successfully build a functional prototype that reliably detected obstacles and learned how sensor noise and different environmental factors affect real world systems. 
+                            I had a personal project where I was building a third eye for the blind, a wearable navigation aid to help visually impaired users detect obstacles in real time. I designed a reliable, real-time embedded system that could sense obstacles in the environment and communicate information to the user in an intuitive way. I integrated ultrasonic sensors, thermistors, and vibrating motors with an Arduino using C++ code to handle real-time sensor data. I iteratively tested the device in different surroundings and refined placement and timing through experimentation. At the end of it, I successfully built a functional prototype that reliably detected obstacles and learned how sensor noise and different environmental factors affect real-world systems.
+                        </div>
                     </div>
+                    <h3>Third Eye for the Blind</h3>
+                    <p>My final project for EE201: Computer Hardware Skills</p>
                 </div>
-
-            </div> 
+            </div>
 
         </section>
 
@@ -175,77 +182,79 @@
         <section id="Experience" class="experience-section">
             <h2>Relevant Experience</h2>
             <div class="group">
-                <h4>Engineering Student Researcher</h4>
-                <p>
-                    San Francisco State University, Personal Health and Assistive Technologies (PHAST) Lab
-                    <span style="margin-left: 430px;">June 2025-Present</span>
-                </p>
-                <p>San Francisco, California</p>
-                <pr><br></pr>
-                <p>	• In the Personalized Health and Assistive Technologies (PHAST) Lab at SF State, I worked on a research project where one of my responsibilities was conducting technical literature reviews on unfamiliar topics which was new to me compared to the hands on experience I gain in the classroom. My task was to get up to speed on relevant research, synthesize key findings, and communicate it to the rest of the team to co-author a submission. I learned how to evaluate technical papers, coordinate with my peers and other faculty to create concise synthesis, and iterated based on feedback for the team's needs. This resulted in a successful submission to the California Speech and Hearing Association as well as development in my ability to navigate new technical domains and communicate my ideas clearly.
-</p>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4>Incoming Solutions Architect Intern</h4>
+                        <span class="date">June 2026 - Sept 2026</span>
+                    </div>
+                    <p class="entry-sub">Amazon Leo (Project Kuiper)</p>
+                    <p class="location">Seattle, Washington</p>
+                    <p class="description">I'll be joining Amazon Leo (Project Kuiper) as a Solutions Architect Intern, developing a customer-facing platform to streamline API integration, featuring live API calls and an embedded AI agent. The role uses Amazon Bedrock AgentCore, Lambda, API Gateway, IAM, and MCP, and includes participating in customer-facing B2B sales and technical calls, gaining exposure to enterprise satellite communications solutions and client engagement strategies.</p>
+                </div>
 
-                <p><br></p>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4>Engineering Student Researcher</h4>
+                        <span class="date">June 2025 - Present</span>
+                    </div>
+                    <p class="entry-sub">San Francisco State University, Personal Health and Assistive Technologies (PHAST) Lab</p>
+                    <p class="location">San Francisco, California</p>
+                    <p class="description">In the Personalized Health and Assistive Technologies (PHAST) Lab at SF State, I worked on a research project where one of my responsibilities was conducting technical literature reviews on unfamiliar topics, which was new to me compared to the hands-on experience I gain in the classroom. My task was to get up to speed on relevant research, synthesize key findings, and communicate it to the rest of the team to co-author a submission. I learned how to evaluate technical papers, coordinate with my peers and other faculty to create concise synthesis, and iterated based on feedback for the team's needs. This resulted in a successful submission to the California Speech and Hearing Association as well as development in my ability to navigate new technical domains and communicate my ideas clearly.</p>
+                </div>
 
-                <h4>Executive Board Member </h4>
-                <p>
-                    HuskyADAPT
-                    <span style="margin-left: 980px;">September 2023-Present</span>
-                </p>
-                <p>Seattle, Washington</p>
-                <pr><br></pr>
-                <p>As a long-time member of HuskyADAPT, I’ve participated in adaptive toy events, where we rewire toys to connect with universal headphone jacks for use with various assistive switches. These adapted toys are distributed locally and nationally to support children with disabilities. In 2024–2025, I served as the Junior Toy Adaptation Chair, leading weekly meetings to repair broken adapted toys and ensure donation quality. In 2025–2026, I transitioned into the Toy Donation Chair role, where I coordinate with local clinics and schools to deliver adapted toys and strengthen community partnerships.<p>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4>Executive Board Member</h4>
+                        <span class="date">September 2023 - Present</span>
+                    </div>
+                    <p class="entry-sub">HuskyADAPT</p>
+                    <p class="location">Seattle, Washington</p>
+                    <p class="description">As a long-time member of HuskyADAPT, I've participated in adaptive toy events, where we rewire toys to connect with universal headphone jacks for use with various assistive switches. These adapted toys are distributed locally and nationally to support children with disabilities. In 2024-2025, I served as the Junior Toy Adaptation Chair, leading weekly meetings to repair broken adapted toys and ensure donation quality. In 2025-2026, I transitioned into the Toy Donation Chair role, where I coordinate with local clinics and schools to deliver adapted toys and strengthen community partnerships.</p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4>Volunteer</h4>
+                        <span class="date">January 2024 - Present</span>
+                    </div>
+                    <p class="entry-sub">GoBabyGo</p>
+                    <p class="location">Seattle, Washington</p>
+                    <p class="description">UW GoBabyGo modifies battery operated, ride-on cars to meet the specific needs of each child in order to provide mobility and socialization for children with limited motor function. As a volunteer, I collaborated in a team of 5 to build, enhance, and adapt a ride-on car with universal switch and custom framing and safety features based on patients' needs. I also helped communicate with families and healthcare providers to ensure safe and efficient transitions.</p>
+                </div>
             </div>
-
-            <p><br></p>
-
-            <h4>Volunteer</h4>
-                <p>
-                    GoBabyGo
-                    <span style="margin-left: 1020px;">January 2024-Present</span>
-                </p>
-                <p>Seattle, Washington</p>
-                <pr><br></pr>
-                <p>UW GoBabyGo modifies battery operated, ride-on cars to meet the specific needs of each child in order to provide mobility and socialization for children with limited motor function. As a volunteer, I collaborated in a team of 5 to build, enhance, and adapt a ride-in-car with universal switch and custom framing and safety features based on patient’s needs. I also helped communicate with families and healthcare providers to ensure a safe and efficient transitions</p>
-            </div>
-
-            <p><br></p>
 
             <h2>Additional Experience</h2>
-            <h4>Engineering Ambassador</h4>
-                <p>
-                    University of Washington, College of Engineering
-                    <span style="margin-left: 740px;">March 2024-Present</span>
-                </p>
-                <p>Seattle, Washington</p>
-                <pr><br></pr>
-                <p> Served as a student ambassador for the UW College of Engineering. Led campus tours of 25+ prospective students, served on engineering student panels, assisted in outreach efforts at local school events. Served as the Public Relations committee lead, creating content for the College of Engineering and Engineering Ambassadors Instagram pages, as well as designing and leading the effort for the UW College of Engineering postcard campaign. </p>
+            <div class="group">
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4>Engineering Ambassador</h4>
+                        <span class="date">March 2024 - Present</span>
+                    </div>
+                    <p class="entry-sub">University of Washington, College of Engineering</p>
+                    <p class="location">Seattle, Washington</p>
+                    <p class="description">Served as a student ambassador for the UW College of Engineering. Led campus tours of 25+ prospective students, served on engineering student panels, and assisted in outreach efforts at local school events. Served as the Public Relations committee lead, creating content for the College of Engineering and Engineering Ambassadors Instagram pages, as well as designing and leading the effort for the UW College of Engineering postcard campaign.</p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4>Director of Continuous Recruitment</h4>
+                        <span class="date">Jan 2025 - Jan 2026</span>
+                    </div>
+                    <p class="entry-sub">Delta Gamma Sorority (Beta - Washington)</p>
+                    <p class="location">Seattle, Washington</p>
+                    <p class="description">I served as the Director of Continuous Recruitment for Delta Gamma Sorority, Beta chapter. Within this position, I led continuous open bidding (COB) and retention efforts to maintain chapter membership growth, and organized, planned, and facilitated over 5 recruitment events. As a member of the Evaluating Committee (EVC), I coordinated recruitment logistics for a chapter of 100+ members, ensuring efficient scheduling, communication, and event execution across multiple rounds.</p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4>Lead Instructor</h4>
+                        <span class="date">June 2024 - August 2025</span>
+                    </div>
+                    <p class="entry-sub">TechKnowHow</p>
+                    <p class="location">San Francisco, California</p>
+                    <p class="description">I began as an assistant instructor in Summer 2024 and advanced to lead instructor in Summer 2025 for TechKnowHow's STEM camps. I taught classes of up to 20 students, guiding them through hands-on projects in LEGO engineering, Scratch programming, and Minecraft modding. I aimed to foster student interest in STEM while strengthening my own skills in teaching, leadership, and curriculum delivery.</p>
+                </div>
             </div>
-
-            <p><br></p>
-
-            <h4>Director of Continuous Recruitment</h4>
-                <p>
-                    Delta Gamma Sorority (Beta-- Washington)
-                    <span style="margin-left: 790px;">Jan 2025-Present</span>
-                </p>
-                <p>Seattle, Washington</p>
-                <pr><br></pr>
-                <p>I served as the Director of Continous Recruitment for Delta Gamma Sorority, Beta chapter. Within this position, I lead continuous open bidding (COB) and retention efforts to maintain chapter membership growth. Organized, planned, and facilitated over 5 recruitment events. As a member of the Evaluating Committee (EVC), coordinated recruitment logistics for a chapter of 100+ members, ensuring efficient scheduling, communication, and event execution across multiple rounds. </p>
-            </div>
-
-            <p><br></p>
-
-            <h4>Lead Instructor</h4>
-                <p>
-                    TechKnowHow
-                    <span style="margin-left: 1020px;">June 2024-August 2025</span>
-                </p>
-                <p>San Francisco, California</p>
-                <pr><br></pr>
-                <p>I began as an assistant instructor in Summer 2024 and advanced to lead instructor in Summer 2025 for TechKnowHow’s STEM camps. I taught classes of up to 20 students, guiding them through hands-on projects in LEGO engineering, Scratch programming, and Minecraft modding. I aimed to foster student interest in STEM while strengthening my own skills in teaching, leadership, and curriculum delivery.</p>
-            </div>
-
         </section>
 
     </main>
