@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyra Dang - Projects</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--SIDEBAR NAV-->
+    <nav class="sidebar">
+        <a href="index.html" class="sidebar-logo">Kyra Dang</a>
+
+        <div class="sidebar-links">
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="skills.html">
+                <i class="fa-solid fa-code"></i>
+                <span>Skills</span>
+            </a>
+
+            <a href="projects.html" class="active">
+                <i class="fa-solid fa-robot"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="experience.html">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Experience</span>
+            </a>
+        </div>
+
+        <div class="sidebar-social">
+            <a href="https://github.com/kyrad2004" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span>Github</span>
+            </a>
+
+            <a href="http://linkedin.com/in/kyra-dang " target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Resume</span>
+            </a>
+
+            <a href="mailto:ktbdang04@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <!--SECTION 3: PROJECTS-->
+        <section id="Projects" class="project-section">
+            <h2>Projects</h2>
+
+            <div class="group">
+                <div class="project-details">
+                    <div class="overlay-text">
+                        <img src="images/project1.webp" alt="Photo of DE1SoC Board">
+                        <div class="hover-text">
+                            In my digital circuits course, I worked individually to design an interactive Frogger game implemented on a De1-SoC FPGA. The challenge was to build a reliable real-time digital system using finite state machines while handling user inputs and timing controls. I was responsible for designing and implementing the game's core logic, timing controllers, and input handling. The goal was to ensure smooth gameplay, accurate state transitions, and reliable button input. I designed the system's architecture using a multiple FSM approach to separate game logic and input debouncing. I implemented timing controllers to synchronize the game board and player movement and added debouncing logic to eliminate false button triggers. To validate the correctness of my SystemVerilog system, I wrote testbenches in ModelSim and iteratively simulated each module before integrating the full system in Quartus Prime. The final design passed 100% of simulation test cases and functioned reliably without missed inputs. The project strengthened my skills in FPGA design, verification, and debugging, as well as gave me hands-on experience building a real-time digital system.
+                        </div>
+                    </div>
+                    <h3>De1SoC Frogger Project</h3>
+                    <p>My final project for EE271: Digital Circuits and Systems</p>
+                </div>
+
+                <div class="project-details">
+                    <div class="overlay-text">
+                        <img src="images/robot.webp" alt="Photo of Line Following Robot">
+                        <div class="hover-text">
+                            As a part of my hardware fundamentals course, my team was tasked with designing a line-following robot capable of reliably tracking a line course in real time. The system had to integrate sensors, control logic, and mechanical design while meeting strict performance requirements. I was tasked with the design of the embedded system and its sensor interface, PCB design, and control logic. Our group's goal was to achieve stable closed-loop control while ensuring robust sensor readings. I helped design a custom PCB in KiCad to integrate line sensors with an Arduino microcontroller and implement closed-loop control logic to adjust motor outputs based on sensor feedback. I also contributed to mechanical design by modeling and fabricating a 3D-printed chassis in Fusion360. We iteratively tested and tuned our sensor thresholds and control parameters to improve tracking accuracy. Our robot achieved 100% course completion with consistent real-time tracking accuracy and ranked top 10 out of 40+ teams. This project reinforced my understanding of embedded firmware development, PCB design, and hardware-software integration.
+                        </div>
+                    </div>
+                    <h3>Arduino Line-Following Robot</h3>
+                    <p>My final project for EE201: Computer Hardware Skills</p>
+                </div>
+
+                <div class="project-details">
+                    <div class="overlay-text">
+                        <img src="images/thirdeye.webp" alt="Photo of Third Eye for the Blind">
+                        <div class="hover-text">
+                            I had a personal project where I was building a third eye for the blind, a wearable navigation aid to help visually impaired users detect obstacles in real time. I designed a reliable, real-time embedded system that could sense obstacles in the environment and communicate information to the user in an intuitive way. I integrated ultrasonic sensors, thermistors, and vibrating motors with an Arduino using C++ code to handle real-time sensor data. I iteratively tested the device in different surroundings and refined placement and timing through experimentation. At the end of it, I successfully built a functional prototype that reliably detected obstacles and learned how sensor noise and different environmental factors affect real-world systems.
+                        </div>
+                    </div>
+                    <h3>Third Eye for the Blind</h3>
+                    <p>My final project for EE201: Computer Hardware Skills</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</body>
+</html>
