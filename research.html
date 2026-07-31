@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyra Dang - De1SoC Frogger Project</title>
+    <title>Kyra Dang - Research</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
                 <span>Internship</span>
             </a>
 
-            <a href="research.html">
+            <a href="research.html" class="active">
                 <i class="fa-solid fa-flask"></i>
                 <span>Research</span>
             </a>
@@ -39,7 +39,7 @@
                 <span>Skills</span>
             </a>
 
-            <a href="projects.html" class="active">
+            <a href="projects.html">
                 <i class="fa-solid fa-robot"></i>
                 <span>Projects</span>
             </a>
@@ -75,35 +75,26 @@
 
     <main>
         <section class="project-section project-detail">
-            <a href="projects.html" class="back-link">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span>Back to Projects</span>
-            </a>
-
             <div class="project-detail-hero">
-                <img src="images/project1-thumb.webp" alt="Photo of DE1SoC Board">
+                <img src="images/research-thumb.webp" alt="Research poster: A framework to incorporate lived experiences with aided communication systems">
             </div>
 
             <div class="project-detail-meta">
-                <span class="category">Digital Circuits &amp; FPGA</span>
-                <span class="date">Jan 2025 - March 2025</span>
+                <span class="category">Undergraduate Research &middot; PHAST Lab, SFSU</span>
+                <span class="date">June 2025 - Present</span>
             </div>
 
-            <h1>De1SoC Frogger Project</h1>
-            <p>My final project for EE271: Digital Circuits and Systems, University of Washington</p>
+            <h1>Incorporating Aided Communication Systems with Funds of Knowledge</h1>
+            <p>Mathieu DePaul, Michael Cabrera, Kyra Dang, Amitya Thimaiah, Nathan Huey &middot; Advisors: Dr. Alyssa Kubota, John Kim</p>
+            <p>School of Engineering &amp; Department of Speech Language and Hearing Sciences, San Francisco State University</p>
 
-            <p class="description">In my digital circuits course, I worked individually to design an interactive Frogger game implemented on a De1-SoC FPGA. The challenge was to build a reliable real-time digital system using finite state machines while handling user inputs and timing controls. I was responsible for designing and implementing the game's core logic, timing controllers, and input handling. The goal was to ensure smooth gameplay, accurate state transitions, and reliable button input. I designed the system's architecture using a multiple FSM approach to separate game logic and input debouncing. I implemented timing controllers to synchronize the game board and player movement and added debouncing logic to eliminate false button triggers. To validate the correctness of my SystemVerilog system, I wrote testbenches in ModelSim and iteratively simulated each module before integrating the full system in Quartus Prime. The final design passed 100% of simulation test cases and functioned reliably without missed inputs. The project strengthened my skills in FPGA design, verification, and debugging, as well as gave me hands-on experience building a real-time digital system.</p>
+            <p class="description">In the Personalized Health and Assistive Technologies (PHAST) Lab at SF State, I worked on a research project where one of my responsibilities was synthesizing 50+ literature reviews on unfamiliar topics, which was new to me compared to the hands-on experience I gain in the classroom. Our project explores how augmentative and alternative communication (AAC) systems, which typically rely on generic symbols, could better incorporate a user's funds of knowledge (their cultural and lived experiences) to help nonspeaking children express abstract socio-emotional concepts like feelings and states of being. My task was to get up to speed on relevant research, distill key findings, and communicate them to the rest of the team to co-author a submission. I learned how to evaluate technical papers, coordinate with my peers and faculty to create concise synthesis, and iterate based on feedback for the team's needs. This resulted in a successful submission to the California Speech and Hearing Association (CSHA), as well as real growth in my ability to navigate new technical domains and communicate my ideas clearly. This research is supported by the Ken Fong Translational Award and the SFSU STARS Program.</p>
 
             <div class="project-actions">
-                <a href="https://github.com/kyrad2004/FPGA-Frogger" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-github"></i>
-                    <span>View Code on GitHub</span>
+                <a href="research-poster.pdf" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>View Full Poster (PDF)</span>
                 </a>
-            </div>
-
-            <div class="demo-section">
-                <h3>Demo</h3>
-                <p class="demo-note">Demo video coming soon — in the meantime, check out the SystemVerilog source and testbenches on GitHub above.</p>
             </div>
         </section>
     </main>
