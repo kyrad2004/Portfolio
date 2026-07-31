@@ -391,6 +391,27 @@ main {
     background-color: #000;
 }
 
+.project-detail .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 700px;
+}
+
+.project-detail .photo-gallery img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .project-detail .photo-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Section 4: Experience */
 .experience-section {
     max-width: 900px;
