@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyra Dang - Projects</title>
+    <title>Kyra Dang - Arduino Line-Following Robot</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,34 +63,32 @@
     </nav>
 
     <main>
-        <!--SECTION 3: PROJECTS-->
-        <section class="project-section">
-            <h2>Projects</h2>
+        <section class="project-section project-detail">
+            <a href="projects.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Projects</span>
+            </a>
 
-            <div class="project-grid">
-                <a href="project-frogger.html" class="project-card">
-                    <img src="images/project1.webp" alt="Photo of DE1SoC Board">
-                    <div class="card-overlay">
-                        <h3>De1SoC Frogger Project</h3>
-                        <span>Digital Circuits &amp; FPGA</span>
-                    </div>
-                </a>
+            <div class="project-detail-hero">
+                <img src="images/robot.webp" alt="Photo of Line Following Robot">
+            </div>
 
-                <a href="project-robot.html" class="project-card">
-                    <img src="images/robot.webp" alt="Photo of Line Following Robot">
-                    <div class="card-overlay">
-                        <h3>Arduino Line-Following Robot</h3>
-                        <span>Embedded Systems</span>
-                    </div>
-                </a>
+            <div class="project-detail-meta">
+                <span class="category">Embedded Systems</span>
+                <span class="date">EE201: Computer Hardware Skills</span>
+            </div>
 
-                <a href="project-thirdeye.html" class="project-card">
-                    <img src="images/thirdeye.webp" alt="Photo of Third Eye for the Blind">
-                    <div class="card-overlay">
-                        <h3>Third Eye for the Blind</h3>
-                        <span>Assistive Technology</span>
-                    </div>
-                </a>
+            <h1>Arduino Line-Following Robot</h1>
+            <p>Team project for EE201: Computer Hardware Skills, University of Washington</p>
+
+            <p class="description">As a part of my hardware fundamentals course, my team was tasked with designing a line-following robot capable of reliably tracking a line course in real time. The system had to integrate sensors, control logic, and mechanical design while meeting strict performance requirements. I was tasked with the design of the embedded system and its sensor interface, PCB design, and control logic. Our group's goal was to achieve stable closed-loop control while ensuring robust sensor readings. I helped design a custom PCB in KiCad to integrate line sensors with an Arduino microcontroller and implement closed-loop control logic to adjust motor outputs based on sensor feedback. I also contributed to mechanical design by modeling and fabricating a 3D-printed chassis in Fusion360. We iteratively tested and tuned our sensor thresholds and control parameters to improve tracking accuracy. Our robot achieved 100% course completion with consistent real-time tracking accuracy and ranked top 10 out of 40+ teams. This project reinforced my understanding of embedded firmware development, PCB design, and hardware-software integration.</p>
+
+            <div class="demo-section">
+                <h3>Demo</h3>
+                <video controls preload="metadata" poster="images/robot.webp">
+                    <source src="images/robot-demo.mp4" type="video/mp4">
+                    Your browser doesn't support embedded video. <a href="images/robot-demo.mp4">Download the demo clip</a> instead.
+                </video>
             </div>
         </section>
     </main>

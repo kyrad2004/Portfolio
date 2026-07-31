@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyra Dang - De1SoC Frogger Project</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--SIDEBAR NAV-->
+    <nav class="sidebar">
+        <a href="index.html" class="sidebar-logo">Kyra Dang</a>
+
+        <div class="sidebar-links">
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="skills.html">
+                <i class="fa-solid fa-code"></i>
+                <span>Skills</span>
+            </a>
+
+            <a href="projects.html" class="active">
+                <i class="fa-solid fa-robot"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="experience.html">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Experience</span>
+            </a>
+        </div>
+
+        <div class="sidebar-social">
+            <a href="https://github.com/kyrad2004" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span>Github</span>
+            </a>
+
+            <a href="http://linkedin.com/in/kyra-dang " target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Resume</span>
+            </a>
+
+            <a href="mailto:ktbdang04@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="project-section project-detail">
+            <a href="projects.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Projects</span>
+            </a>
+
+            <div class="project-detail-hero">
+                <img src="images/project1.webp" alt="Photo of DE1SoC Board">
+            </div>
+
+            <div class="project-detail-meta">
+                <span class="category">Digital Circuits &amp; FPGA</span>
+                <span class="date">Jan 2025 - March 2025</span>
+            </div>
+
+            <h1>De1SoC Frogger Project</h1>
+            <p>My final project for EE271: Digital Circuits and Systems, University of Washington</p>
+
+            <p class="description">In my digital circuits course, I worked individually to design an interactive Frogger game implemented on a De1-SoC FPGA. The challenge was to build a reliable real-time digital system using finite state machines while handling user inputs and timing controls. I was responsible for designing and implementing the game's core logic, timing controllers, and input handling. The goal was to ensure smooth gameplay, accurate state transitions, and reliable button input. I designed the system's architecture using a multiple FSM approach to separate game logic and input debouncing. I implemented timing controllers to synchronize the game board and player movement and added debouncing logic to eliminate false button triggers. To validate the correctness of my SystemVerilog system, I wrote testbenches in ModelSim and iteratively simulated each module before integrating the full system in Quartus Prime. The final design passed 100% of simulation test cases and functioned reliably without missed inputs. The project strengthened my skills in FPGA design, verification, and debugging, as well as gave me hands-on experience building a real-time digital system.</p>
+
+            <div class="project-actions">
+                <a href="https://github.com/kyrad2004/FPGA-Frogger" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    <span>View Code on GitHub</span>
+                </a>
+            </div>
+
+            <div class="demo-section">
+                <h3>Demo</h3>
+                <p class="demo-note">Demo video coming soon — in the meantime, check out the SystemVerilog source and testbenches on GitHub above.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

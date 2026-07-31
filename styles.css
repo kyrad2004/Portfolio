@@ -222,77 +222,173 @@ main {
     margin-bottom: 30px;
 }
 
-.project-section .group {
+.project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    align-items: center;
-    gap: 50px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
+    gap: 28px;
 }
 
-.project-section .group .project-details {
-    text-align: center;
-    flex: 2;
-}
-
-.project-section .group .project-details .overlay-text {
+.project-card {
     position: relative;
-    width: 300px;
-    aspect-ratio: 1/1;
-    margin: 0 auto 15px;
-    border-radius: 50%;
+    display: block;
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
     overflow: hidden;
+    background-color: #ddd;
 }
 
-.project-section .group .project-details .overlay-text img {
+.project-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
     display: block;
+    transition: transform .4s ease;
 }
 
-.project-section .group .project-details .hover-text {
+.project-card:hover img,
+.project-card:focus img {
+    transform: scale(1.06);
+}
+
+.project-card .card-overlay {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(110, 3, 94, 0.9); /* dark magenta overlay */
-    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    text-align: center;
-    font-size: 12.5px;
-    line-height: 1.4;
-    overflow-y: auto;
+    justify-content: flex-end;
+    padding: 22px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0) 100%);
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    cursor: default;
+    transition: opacity .25s ease;
 }
 
-.project-section .group .project-details:hover .hover-text,
-.project-section .group .project-details:focus-within .hover-text {
+.project-card:hover .card-overlay,
+.project-card:focus .card-overlay {
     opacity: 1;
 }
 
-.project-section .group .project-details p {
-    /* font-weight: 600; */
-    margin-bottom: 20px;
-    font-size: 15px;
+.project-card .card-overlay h3 {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 4px;
 }
 
-.project-section .group .project-details h3 {
-    margin-top: 15px;
-    margin-bottom: 10px;
+.project-card .card-overlay span {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
-.project-section .group .project-details p:last-child {
-    font-weight: normal;
+/* Project detail pages */
+.project-detail {
+    max-width: 850px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.back-link:hover {
+    color: var(--link-color);
+}
+
+.project-detail-hero {
+    width: 100%;
+    max-height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.project-detail-hero img,
+.project-detail-hero video {
+    width: 100%;
+    height: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-detail-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-bottom: 6px;
+}
+
+.project-detail-meta .category {
+    font-weight: 600;
+    color: var(--link-color);
+}
+
+.project-detail-meta .date {
+    color: #666;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.project-detail h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.project-detail .description {
+    line-height: 1.7;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.project-detail .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.project-detail .project-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 2px solid var(--link-color);
+    border-radius: 5px;
+    font-weight: 600;
+    transition: .15s;
+}
+
+.project-detail .project-actions a:hover {
+    color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+.project-detail .demo-section {
+    margin-top: 35px;
+}
+
+.project-detail .demo-section h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.project-detail .demo-note {
+    color: #777;
+    font-style: italic;
+}
+
+.project-detail .demo-section video {
+    width: 100%;
+    max-height: 500px;
+    border-radius: 10px;
+    display: block;
+    background-color: #000;
 }
 
 /* Section 4: Experience */
@@ -439,15 +535,6 @@ main {
 
     .hero-section .headshot img{
         width: 300px;
-    }
-
-    /* Section 3: Projects */
-    .project-section {
-        text-align: center;
-    }
-
-    .project-section .group {
-        flex-direction: column;
     }
 
     /* Section 4: Experience */
