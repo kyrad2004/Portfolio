@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyra Dang - Projects</title>
+    <title>Kyra Dang - PROJECT TITLE</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,44 +73,46 @@
         </div>
     </nav>
 
+
     <main>
-        <!--SECTION 3: PROJECTS-->
-        <section class="project-section">
-            <h2>Projects</h2>
+        <section class="project-section project-detail">
+            <a href="projects.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Projects</span>
+            </a>
 
-            <div class="project-grid">
-                <a href="project-frogger.html" class="project-card">
-                    <img src="images/project1-thumb.webp" alt="Photo of DE1SoC Board">
-                    <div class="card-overlay">
-                        <h3>De1SoC Frogger Project</h3>
-                        <span>Digital Circuits &amp; FPGA</span>
-                    </div>
-                </a>
+            <div class="project-detail-hero">
+                <img src="images/circuits-thumb.webp" alt="ALT TEXT: short description of the photo">
+            </div>
 
-                <a href="project-robot.html" class="project-card">
-                    <img src="images/robot-thumb.webp" alt="Photo of Line Following Robot">
-                    <div class="card-overlay">
-                        <h3>Arduino Line-Following Robot</h3>
-                        <span>Embedded Systems</span>
-                    </div>
-                </a>
+            <!-- Left = category (matches the tile on projects.html). Right = date range. -->
+            <div class="project-detail-meta">
+                <span class="category">CATEGORY</span>
+                <span class="date">MONTH YEAR - MONTH YEAR</span>
+            </div>
 
-                <a href="project-thirdeye.html" class="project-card">
-                    <img src="images/thirdeye-thumb.webp" alt="Photo of Third Eye for the Blind">
-                    <div class="card-overlay">
-                        <h3>Third Eye for the Blind</h3>
-                        <span>Assistive Technology</span>
-                    </div>
-                </a>
+            <!-- Project title -->
+            <h1>PROJECT TITLE</h1>
 
-                <!-- Title and category below must match the <h1> and .category on project-circuits.html -->
-                <a href="project-circuits.html" class="project-card">
-                    <img src="images/circuits-thumb.webp" alt="ALT TEXT: short description of the photo">
-                    <div class="card-overlay">
-                        <h3>PROJECT TITLE</h3>
-                        <span>CATEGORY</span>
-                    </div>
+            <!-- One-line context: course number and name, or "Independent engineering project" -->
+            <p>CONTEXT LINE</p>
+
+            <!-- Main write-up. The other project pages each use one paragraph covering:
+                 what the project was, the challenge, what you specifically did,
+                 how you tested/validated it, and the outcome or what you learned. -->
+            <p class="description">DESCRIPTION</p>
+
+            <!-- Optional: delete this whole block if there's no public repo. -->
+            <div class="project-actions">
+                <a href="GITHUB URL" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    <span>View Code on GitHub</span>
                 </a>
+            </div>
+
+            <div class="demo-section">
+                <h3>Demo</h3>
+                <p class="demo-note">Demo video coming soon.</p>
             </div>
         </section>
     </main>
