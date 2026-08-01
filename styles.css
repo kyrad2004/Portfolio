@@ -493,6 +493,24 @@ main {
     font-size: 15px;
 }
 
+.experience-section .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: gap .15s ease;
+}
+
+.experience-section .read-more:hover {
+    gap: 11px;
+}
+
+.experience-section .read-more i {
+    font-size: 13px;
+}
+
 
 
 @media (max-width: 900px) {
