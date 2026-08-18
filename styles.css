@@ -261,6 +261,24 @@ main {
     font-size: 15px;
 }
 
+.skills-section .cert-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: gap .15s ease;
+}
+
+.skills-section .cert-link:hover {
+    gap: 11px;
+}
+
+.skills-section .cert-link i {
+    font-size: 12px;
+}
+
 /* Section 3: Projects*/
 .project-section {
     max-width: 1200px;
