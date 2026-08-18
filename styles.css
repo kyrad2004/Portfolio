@@ -211,6 +211,56 @@ main {
     font-size: 15.5px;
 }
 
+.skills-section .cert-heading {
+    margin-top: 45px;
+}
+
+.skills-section .certifications {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.skills-section .certification {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 700px;
+    padding: 22px 26px;
+    border: 1.5px solid #d3d3d3;
+    border-radius: 5px;
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.skills-section .certification:hover {
+    border-color: var(--link-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.skills-section .certification img {
+    width: 115px;
+    height: 115px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.skills-section .cert-text h3 {
+    font-size: 18px;
+}
+
+.skills-section .cert-issuer {
+    color: #777;
+    font-style: italic;
+    font-size: 14px;
+    margin: 4px 0 10px;
+}
+
+.skills-section .cert-text p {
+    line-height: 1.6;
+    font-size: 15px;
+}
+
 /* Section 3: Projects*/
 .project-section {
     max-width: 1200px;
@@ -589,6 +639,13 @@ main {
     /* Section 4: Experience */
     .experience-section .group {
         flex-direction: column;
+    }
+
+    /* Section 2: Skills */
+    .skills-section .certification {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
     }
 
 }
