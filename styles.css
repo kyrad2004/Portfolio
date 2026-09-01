@@ -451,6 +451,19 @@ main {
     font-style: italic;
 }
 
+.project-detail .demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-weight: 600;
+    transition: gap .15s ease;
+}
+
+.project-detail .demo-link:hover {
+    gap: 12px;
+}
+
 .project-detail .demo-section video {
     width: 100%;
     max-width: 700px;

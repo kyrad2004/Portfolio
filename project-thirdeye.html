@@ -94,13 +94,29 @@
             </div>
 
             <h1>Third Eye for the Blind</h1>
-            <p>Independent engineering project</p>
+            <p>BlueStamp Engineering Summer Program</p>
 
-            <p class="description">I had a personal project where I was building a third eye for the blind, a wearable navigation aid to help visually impaired users detect obstacles in real time. I designed a reliable, real-time embedded system that could sense obstacles in the environment and communicate information to the user in an intuitive way. I integrated ultrasonic sensors, thermistors, and vibrating motors with an Arduino using C++ code to handle real-time sensor data. I iteratively tested the device in different surroundings and refined placement and timing through experimentation. At the end of it, I successfully built a functional prototype that reliably detected obstacles and learned how sensor noise and different environmental factors affect real-world systems.</p>
+            <p class="description">Through BlueStamp Engineering's summer program, I built a Third Eye for the Blind: a glove-mounted navigation aid that lets a user with a visual impairment sense obstacles with their hand before reaching them. The core is an ultrasonic sensor that measures distance by timing how long an emitted pulse takes to bounce back off an object, driving feedback that grows more frequent and higher-pitched as the user gets closer. I built the device up in stages, starting with the sensor and a piezo buzzer on a breadboard, then adding a vibrating motor and a button so the user can toggle between audible and haptic feedback depending on their surroundings. I later added a thermistor so the device also senses the temperature of what it is pointed at, overriding the normal feedback with a continuous alert when a surface is dangerously hot &mdash; a safety case that matters when someone is reaching quickly toward something they cannot see. To make it genuinely wearable, I moved the circuit off the breadboard and soldered it onto a perfboard around an Arduino Micro, powered it from a 9V battery, and mounted the assembly to a glove. The soldering took the most patience of anything in the project, since one bad joint could silently break the device and every connection had to be traced and verified. I documented the build as four milestones with demo videos, and came away with hands-on experience in the hardware side of embedded work &mdash; sensors, soldering, and packaging a prototype into something someone could actually wear &mdash; that I had not gotten from software alone.</p>
+
+            <div class="project-actions">
+                <a href="https://kyrad2004.github.io/KyraD_BSE_Portfolio/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span>View Full Project Portfolio</span>
+                </a>
+
+                <a href="https://github.com/kyrad2004/KyraD_BSE_Portfolio" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    <span>Portfolio Repository</span>
+                </a>
+            </div>
 
             <div class="demo-section">
                 <h3>Demo</h3>
-                <p class="demo-note">Demo video coming soon.</p>
+                <p class="demo-note">Final milestone walkthrough, covering the finished glove-mounted device with distance sensing, buzzer and vibration modes, and the thermistor safety override.</p>
+                <a href="https://www.youtube.com/watch?v=AKeC7Vd3b3w" class="demo-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>Watch the final demo</span>
+                </a>
             </div>
         </section>
     </main>
