@@ -671,7 +671,7 @@ main {
 
 /* Section 2: Skills */
 .skills-section {
-    max-width: 1000px;
+    max-width: 1080px;
     margin: 0 auto;
 }
 
@@ -681,8 +681,11 @@ main {
 }
 
 .skills-section .text {
+    /* The section is 1080px wide for the cell grid, but prose at that
+       measure runs ~130 characters a line. */
+    max-width: 74ch;
+    margin: 0 auto 20px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .skills-section .cells {
@@ -861,7 +864,8 @@ main {
 
 /* Project detail pages */
 .project-detail {
-    max-width: 850px;
+    max-width: 860px;
+    margin: 0 auto;
 }
 
 .back-link {
@@ -879,8 +883,9 @@ main {
 
 .project-detail-hero {
     width: 100%;
-    max-width: 700px;
-    aspect-ratio: 4 / 3;
+    /* 4:3 at the full column width ran 645px tall and pushed the title off
+       the fold, so the detail hero reads as a banner instead. */
+    aspect-ratio: 16 / 9;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 25px;
@@ -920,8 +925,9 @@ main {
 }
 
 .project-detail .description {
-    line-height: 1.7;
-    font-size: 16px;
+    max-width: 68ch;
+    line-height: 1.75;
+    font-size: 16.5px;
     margin-top: 20px;
 }
 
@@ -977,7 +983,6 @@ main {
 
 .project-detail .demo-section video {
     width: 100%;
-    max-width: 700px;
     border-radius: 10px;
     display: block;
     background-color: #000;
@@ -985,7 +990,6 @@ main {
 
 .project-detail .demo-section .schematic {
     width: 100%;
-    max-width: 700px;
     border-radius: 10px;
     display: block;
     background-color: #fff;
@@ -997,7 +1001,6 @@ main {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
-    max-width: 700px;
 }
 
 .project-detail .photo-gallery img {
@@ -1016,7 +1019,7 @@ main {
 
 /* Section 4: Experience */
 .experience-section {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -1081,7 +1084,10 @@ main {
 }
 
 .experience-section .description {
-    line-height: 1.6;
+    /* The entry header spans the full column so the date can sit right,
+       but the prose needs a readable measure. */
+    max-width: 74ch;
+    line-height: 1.65;
     font-size: 15px;
 }
 
@@ -1339,16 +1345,19 @@ main {
 /* Reveal on scroll — main.js tags the targets and flips .is-visible */
 .js-motion [data-reveal] {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(22px);
+    filter: blur(6px);
     transition:
-        opacity .7s cubic-bezier(.2, .7, .2, 1),
-        transform .7s cubic-bezier(.2, .7, .2, 1);
+        opacity .75s cubic-bezier(.22, 1, .36, 1),
+        transform .75s cubic-bezier(.22, 1, .36, 1),
+        filter .75s cubic-bezier(.22, 1, .36, 1);
     transition-delay: var(--reveal-delay, 0s);
 }
 
 .js-motion [data-reveal].is-visible {
     opacity: 1;
     transform: none;
+    filter: blur(0);
 }
 
 /* Lift the existing cards a little further on hover */
@@ -1379,6 +1388,7 @@ main {
     .js-motion [data-reveal] {
         opacity: 1 !important;
         transform: none !important;
+        filter: none !important;
     }
 
     .hero-bg {
@@ -1407,4 +1417,88 @@ main {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* ==========================================================================
+   Shared UI
+   Pulls the inner pages onto the same display type, button language and
+   scroll feel as the home page cover.
+   ========================================================================== */
+
+/* A soft wash at the top of every non-cover page, echoing the home page's
+   colour without competing with the content. */
+body:not(.has-cover) main {
+    background-image: radial-gradient(72% 40% at 50% 0%,
+        rgba(74, 118, 238, .13), rgba(124, 92, 255, .06) 46%, transparent 72%);
+    background-repeat: no-repeat;
+    background-size: 100% 540px;
+}
+
+/* Display type: light weight and tight tracking, as on the cover */
+.skills-section h2,
+.project-section h2,
+.experience-section h2,
+.project-detail h1 {
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -.04em;
+    text-wrap: balance;
+}
+
+.skills-section h2,
+.project-section h2,
+.experience-section h2 {
+    font-size: clamp(30px, 4vw, 48px);
+    margin-bottom: 28px;
+}
+
+.project-detail h1 {
+    font-size: clamp(27px, 3.3vw, 40px);
+    margin-bottom: 10px;
+}
+
+/* Same pill + shine as the intro section's link row */
+.project-detail .project-actions a {
+    position: relative;
+    overflow: hidden;
+    padding: 9px 17px;
+    border: 2px solid rgba(74, 118, 238, .5);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    font-size: 14.5px;
+    transition: transform .28s cubic-bezier(.2, .8, .2, 1), border-color .25s ease,
+                box-shadow .25s ease, color .25s ease;
+}
+
+.project-detail .project-actions a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .85), transparent);
+    transform: skewX(-20deg);
+    transition: left .6s ease;
+}
+
+.project-detail .project-actions a:hover {
+    transform: translateY(-3px);
+    border-color: var(--link-color);
+    box-shadow: 0 10px 22px rgba(74, 118, 238, .22);
+}
+
+.project-detail .project-actions a:hover::after {
+    left: 140%;
+}
+
+/* Arrow nudge on the back link, matching the cover's link behaviour */
+.back-link i {
+    transition: transform .2s ease;
+}
+
+.back-link:hover i {
+    transform: translateX(-3px);
 }
