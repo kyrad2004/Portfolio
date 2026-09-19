@@ -121,8 +121,11 @@ main {
 }
 
 /* Section 1: Cover hero
-   Full-bleed image panel. It cancels main's padding with negative margins,
-   so --pad-x / --pad-y on main are the single source of truth. */
+   Follows hero-19: the image carries the scene with only a light wash for
+   legibility, oversized light-weight heading with tight tracking, a solid
+   white pill next to a plain text link, and a scroll label bottom-right.
+   Full-bleed — it cancels main's padding with negative margins, so
+   --pad-x / --pad-y on main stay the single source of truth. */
 .cover {
     position: relative;
     display: flex;
@@ -133,8 +136,11 @@ main {
     min-height: 100vh;
     min-height: 100svh;
     overflow: hidden;
+    isolation: isolate;
 }
 
+/* main.js drives this one for parallax, so the entrance animation has to
+   live on the <img> inside it or the two transforms fight. */
 .cover-media {
     position: absolute;
     inset: 0;
@@ -142,96 +148,64 @@ main {
     will-change: transform;
 }
 
-/* Swap the <img> in index.html for a photo and this still works —
-   object-fit keeps any aspect ratio filling the panel. */
 .cover-img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
     object-position: center 62%;
-    animation: kenburns 28s ease-in-out infinite alternate;
 }
 
-@keyframes kenburns {
-    from { transform: scale(1.04); }
-    to   { transform: scale(1.17) translateY(-1.5%); }
-}
-
+/* hero-19 runs no overlay at all, but its art is uniformly dark. This is a
+   soft left-side wash instead: enough to hold the copy on a brighter
+   image, far lighter than a full scrim. */
 .cover-scrim {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(to bottom, rgba(5, 8, 26, .58) 0%, rgba(5, 8, 26, .22) 34%, rgba(5, 8, 26, .78) 100%),
-        radial-gradient(85% 70% at 28% 52%, rgba(5, 8, 26, .6), transparent 72%);
+        linear-gradient(100deg, rgba(6, 10, 28, .66) 0%, rgba(6, 10, 28, .3) 42%, rgba(6, 10, 28, 0) 74%),
+        linear-gradient(to bottom, rgba(6, 10, 28, .3) 0%, rgba(6, 10, 28, 0) 26%, rgba(6, 10, 28, .34) 100%);
 }
 
 .cover-content {
     position: relative;
-    max-width: 800px;
+    max-width: 44rem;
 }
 
-.cover-badge {
+/* Eyebrow — plain text with a trailing arrow, not a bordered chip */
+.cover-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 16px 8px 13px;
-    margin-bottom: 26px;
-    border: 1px solid rgba(255, 255, 255, .3);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .12);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    color: #fff;
-    font-size: 13.5px;
-    font-weight: 600;
-    transition: transform .25s cubic-bezier(.2, .8, .2, 1), background-color .25s ease, border-color .25s ease;
+    gap: 8px;
+    margin-bottom: 22px;
+    color: rgba(255, 255, 255, .95);
+    font-size: clamp(12px, .95vw, 14px);
+    font-weight: 500;
+    line-height: 1;
+    transition: opacity .2s ease, transform .2s ease;
 }
 
-.cover-badge:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, .2);
-    border-color: rgba(255, 255, 255, .6);
+.cover-eyebrow:hover {
+    opacity: .85;
 }
 
-.cover-badge i {
-    font-size: 11px;
-    transition: transform .25s ease;
+.cover-eyebrow i {
+    font-size: .8em;
+    transition: transform .2s ease;
 }
 
-.cover-badge:hover i {
-    transform: translateX(3px);
-}
-
-.badge-dot {
-    position: relative;
-    width: 8px;
-    height: 8px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: #6fe3f5;
-}
-
-.badge-dot::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: #6fe3f5;
-    animation: dot-pulse 2.2s ease-out infinite;
-}
-
-@keyframes dot-pulse {
-    0%   { transform: scale(1); opacity: .7; }
-    100% { transform: scale(3.2); opacity: 0; }
+.cover-eyebrow:hover i {
+    transform: translateX(2px);
 }
 
 .cover h1 {
-    font-size: clamp(38px, 6.2vw, 78px);
-    line-height: 1.05;
-    letter-spacing: -.025em;
+    max-width: 18ch;
+    font-size: clamp(3rem, 5.25vw, 6rem);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -.055em;
+    text-wrap: balance;
     color: #fff;
-    margin-bottom: 18px;
 }
 
 /* Animated gradient name — brighter stops so it holds up on the photo */
@@ -260,18 +234,20 @@ main {
     20%, 40%      { transform: rotate(-8deg); }
 }
 
+/* Deliberately small against the oversized heading, as in hero-19 */
 .cover-tagline {
-    font-size: clamp(16px, 1.7vw, 21px);
-    font-weight: 600;
+    max-width: 31rem;
+    margin-top: 20px;
+    font-size: clamp(13.5px, 1.05vw, 16px);
+    font-weight: 500;
     line-height: 1.55;
-    color: rgba(255, 255, 255, .9);
-    max-width: 58ch;
-    margin-bottom: 34px;
+    text-wrap: pretty;
+    color: rgba(255, 255, 255, .86);
 }
 
 /* Rotating word — grid cell stacking keeps the line from jumping */
 .rotator {
-    display: inline-grid;
+    display: none;
     vertical-align: bottom;
     overflow: hidden;
     /* main.js sets the width to the visible word so the rest of the
@@ -302,103 +278,84 @@ main {
 .cover-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    align-items: center;
+    gap: 20px;
+    margin-top: 28px;
 }
 
 .cover-actions a {
-    position: relative;
-    overflow: hidden;
     display: inline-flex;
     align-items: center;
-    gap: 9px;
-    padding: 13px 24px;
-    border-radius: 999px;
-    font-size: 15px;
-    font-weight: 600;
-    transition: transform .28s cubic-bezier(.2, .8, .2, 1), box-shadow .28s ease,
-                background-color .25s ease, border-color .25s ease;
+    gap: 7px;
+    min-height: 44px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color .2s ease, color .2s ease, opacity .2s ease, transform .2s ease;
 }
 
-/* Shine sweep */
-.cover-actions a::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -130%;
-    width: 55%;
-    height: 100%;
-    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .55), transparent);
-    transform: skewX(-20deg);
-    transition: left .6s ease;
-}
-
-.cover-actions a:hover::after {
-    left: 150%;
-}
-
+/* The inset highlight/shade is what gives hero-19's pill its raised edge */
 .btn-primary {
-    background: #fff;
-    color: #11152c;
+    justify-content: center;
+    padding: 0 26px;
+    border-radius: 999px;
+    background: #f4f4f5;
+    color: #1e293b;
+    box-shadow: inset 0 2px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 0 rgba(0, 0, 0, .2);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, .38);
+    background: #e4e4e7;
+    color: #020617;
 }
 
-.btn-ghost {
-    border: 1.5px solid rgba(255, 255, 255, .45);
-    background: rgba(255, 255, 255, .1);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+.btn-text {
+    color: rgba(255, 255, 255, .9);
+}
+
+.btn-text:hover {
     color: #fff;
 }
 
-.btn-ghost:hover {
-    transform: translateY(-3px);
-    border-color: #fff;
-    background: rgba(255, 255, 255, .2);
+.cover-actions a i {
+    font-size: .85em;
+    transition: transform .2s ease;
+}
+
+.cover-actions a:hover i {
+    transform: translateX(2px);
+}
+
+/* Tactile press, applied to every interactive element on the cover */
+.cover-actions a:active,
+.cover-eyebrow:active,
+.scroll-cue:active {
+    transform: scale(.96);
 }
 
 .scroll-cue {
     position: absolute;
-    left: 50%;
-    bottom: 26px;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
+    right: var(--pad-x);
+    bottom: 30px;
+    display: inline-flex;
     align-items: center;
-    gap: 7px;
-    color: rgba(255, 255, 255, .78);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    transition: color .2s ease;
+    gap: 12px;
+    color: rgba(255, 255, 255, .85);
+    font-size: 12px;
+    font-weight: 500;
+    transition: opacity .2s ease, transform .2s ease;
 }
 
 .scroll-cue:hover {
-    color: #fff;
+    opacity: .8;
 }
 
 .scroll-cue i {
-    animation: cue 2s ease-in-out infinite;
+    font-size: .95em;
+    transition: transform .2s ease;
 }
 
-@keyframes cue {
-    0%, 100% { transform: translateY(0); opacity: .65; }
-    50%      { transform: translateY(7px); opacity: 1; }
-}
-
-/* Fades in without clobbering the translateX(-50%) that centres it,
-   which is why it can't reuse .hero-in */
-.js-motion .scroll-cue {
-    opacity: 0;
-    animation: cue-in .8s ease .9s forwards;
-}
-
-@keyframes cue-in {
-    to { opacity: 1; }
+.scroll-cue:hover i {
+    transform: translateY(2px);
 }
 
 /* Section 2: Intro / about */
@@ -1106,6 +1063,11 @@ main {
     .intro-section {
         min-height: auto;
     }
+
+    /* hero-19 drops its scroll label on small screens */
+    .scroll-cue {
+        display: none;
+    }
 }
 
 @media (max-width: 740px) {
@@ -1182,15 +1144,46 @@ main {
 }
 
 /* Hero entrance — plays on load, staggered via --d */
-.js-motion .hero-in {
+.js-motion .fx-copy,
+.js-motion .fx-btn,
+.js-motion .cover-img {
     opacity: 0;
-    transform: translateY(20px);
-    animation: hero-in .85s cubic-bezier(.2, .7, .2, 1) forwards;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.22, 1, .36, 1);
     animation-delay: var(--d, 0s);
 }
 
-@keyframes hero-in {
-    to { opacity: 1; transform: none; }
+/* Copy slides in from the left as it sharpens */
+.js-motion .fx-copy {
+    animation-name: fx-copy;
+    animation-duration: .78s;
+}
+
+@keyframes fx-copy {
+    from { opacity: 0; transform: translateX(-22px); filter: blur(8px); }
+    to   { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* Buttons rise instead, on their own stagger */
+.js-motion .fx-btn {
+    animation-name: fx-btn;
+    animation-duration: .58s;
+}
+
+@keyframes fx-btn {
+    from { opacity: 0; transform: translateY(12px) scale(.98); filter: blur(6px); }
+    to   { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* The cover image settles in behind everything else */
+.js-motion .cover-img {
+    animation-name: fx-media;
+    animation-duration: 1.08s;
+}
+
+@keyframes fx-media {
+    from { opacity: 0; transform: translate(30px, 18px) scale(1.04); filter: blur(12px); }
+    to   { opacity: 1; transform: none; filter: blur(0); }
 }
 
 /* Reveal on scroll — main.js tags the targets and flips .is-visible */
@@ -1230,7 +1223,9 @@ main {
         scroll-behavior: auto !important;
     }
 
-    .js-motion .hero-in,
+    .js-motion .fx-copy,
+    .js-motion .fx-btn,
+    .js-motion .cover-img,
     .js-motion [data-reveal] {
         opacity: 1 !important;
         transform: none !important;
