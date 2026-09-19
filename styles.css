@@ -107,23 +107,310 @@ a {
 }
 
 main {
+    /* The cover hero cancels these with negative margins to go full-bleed,
+       so keep them as tokens rather than hard-coding the padding twice. */
+    --pad-x: 50px;
+    --pad-y: 60px;
     flex: 1;
     min-width: 0;
-    padding: 60px 50px;
+    padding: var(--pad-y) var(--pad-x);
     /* The hero's blurred glow bleeds past the content box; clip it so it
        can't widen the page. `clip` rather than `hidden` so this never
        becomes a scroll container and the sticky sidebar keeps working. */
     overflow-x: clip;
 }
 
-/* Section 1: Hero */
-.hero-section {
+/* Section 1: Cover hero
+   Full-bleed image panel. It cancels main's padding with negative margins,
+   so --pad-x / --pad-y on main are the single source of truth. */
+.cover {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: calc(var(--pad-y) * -1) calc(var(--pad-x) * -1) clamp(70px, 9vw, 120px);
+    padding: var(--pad-y) var(--pad-x);
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow: hidden;
+}
+
+.cover-media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    will-change: transform;
+}
+
+/* Swap the <img> in index.html for a photo and this still works —
+   object-fit keeps any aspect ratio filling the panel. */
+.cover-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 62%;
+    animation: kenburns 28s ease-in-out infinite alternate;
+}
+
+@keyframes kenburns {
+    from { transform: scale(1.04); }
+    to   { transform: scale(1.17) translateY(-1.5%); }
+}
+
+.cover-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom, rgba(5, 8, 26, .58) 0%, rgba(5, 8, 26, .22) 34%, rgba(5, 8, 26, .78) 100%),
+        radial-gradient(85% 70% at 28% 52%, rgba(5, 8, 26, .6), transparent 72%);
+}
+
+.cover-content {
+    position: relative;
+    max-width: 800px;
+}
+
+.cover-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 13px;
+    margin-bottom: 26px;
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: transform .25s cubic-bezier(.2, .8, .2, 1), background-color .25s ease, border-color .25s ease;
+}
+
+.cover-badge:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, .2);
+    border-color: rgba(255, 255, 255, .6);
+}
+
+.cover-badge i {
+    font-size: 11px;
+    transition: transform .25s ease;
+}
+
+.cover-badge:hover i {
+    transform: translateX(3px);
+}
+
+.badge-dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #6fe3f5;
+}
+
+.badge-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #6fe3f5;
+    animation: dot-pulse 2.2s ease-out infinite;
+}
+
+@keyframes dot-pulse {
+    0%   { transform: scale(1); opacity: .7; }
+    100% { transform: scale(3.2); opacity: 0; }
+}
+
+.cover h1 {
+    font-size: clamp(38px, 6.2vw, 78px);
+    line-height: 1.05;
+    letter-spacing: -.025em;
+    color: #fff;
+    margin-bottom: 18px;
+}
+
+/* Animated gradient name — brighter stops so it holds up on the photo */
+.grad-text {
+    background: linear-gradient(100deg, #7aa2ff, #c3a8ff 42%, #6fe3f5 68%, #7aa2ff);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: grad-pan 7s linear infinite;
+}
+
+@keyframes grad-pan {
+    to { background-position: 250% 50%; }
+}
+
+.wave {
+    display: inline-block;
+    transform-origin: 70% 75%;
+    animation: wave 2.8s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    10%, 30%      { transform: rotate(14deg); }
+    20%, 40%      { transform: rotate(-8deg); }
+}
+
+.cover-tagline {
+    font-size: clamp(16px, 1.7vw, 21px);
+    font-weight: 600;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, .9);
+    max-width: 58ch;
+    margin-bottom: 34px;
+}
+
+/* Rotating word — grid cell stacking keeps the line from jumping */
+.rotator {
+    display: inline-grid;
+    vertical-align: bottom;
+    overflow: hidden;
+    /* main.js sets the width to the visible word so the rest of the
+       sentence stays tight against it */
+    transition: width .5s cubic-bezier(.2, .7, .2, 1);
+}
+
+.rotator-item {
+    grid-area: 1 / 1;
+    justify-self: start;
+    white-space: nowrap;
+    color: #7fe0f7;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity .5s cubic-bezier(.2, .7, .2, 1), transform .5s cubic-bezier(.2, .7, .2, 1);
+}
+
+.rotator-item.is-active {
+    opacity: 1;
+    transform: none;
+}
+
+.rotator-item.is-leaving {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.cover-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.cover-actions a {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: transform .28s cubic-bezier(.2, .8, .2, 1), box-shadow .28s ease,
+                background-color .25s ease, border-color .25s ease;
+}
+
+/* Shine sweep */
+.cover-actions a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .55), transparent);
+    transform: skewX(-20deg);
+    transition: left .6s ease;
+}
+
+.cover-actions a:hover::after {
+    left: 150%;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #11152c;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .38);
+}
+
+.btn-ghost {
+    border: 1.5px solid rgba(255, 255, 255, .45);
+    background: rgba(255, 255, 255, .1);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: #fff;
+}
+
+.btn-ghost:hover {
+    transform: translateY(-3px);
+    border-color: #fff;
+    background: rgba(255, 255, 255, .2);
+}
+
+.scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 26px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255, 255, 255, .78);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    transition: color .2s ease;
+}
+
+.scroll-cue:hover {
+    color: #fff;
+}
+
+.scroll-cue i {
+    animation: cue 2s ease-in-out infinite;
+}
+
+@keyframes cue {
+    0%, 100% { transform: translateY(0); opacity: .65; }
+    50%      { transform: translateY(7px); opacity: 1; }
+}
+
+/* Fades in without clobbering the translateX(-50%) that centres it,
+   which is why it can't reuse .hero-in */
+.js-motion .scroll-cue {
+    opacity: 0;
+    animation: cue-in .8s ease .9s forwards;
+}
+
+@keyframes cue-in {
+    to { opacity: 1; }
+}
+
+/* Section 2: Intro / about */
+.intro-section {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 40px;
-    min-height: calc(100vh - 120px);
+    /* Tall enough that the cover's "Scroll" cue can actually bring #about
+       to the top of the viewport. */
+    min-height: 100vh;
 }
 
 /* Animated aurora backdrop */
@@ -142,7 +429,7 @@ main {
     display: block;
     border-radius: 50%;
     filter: blur(72px);
-    opacity: .55;
+    opacity: .42;
     will-change: transform;
 }
 
@@ -177,8 +464,8 @@ main {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(to right, rgba(26, 28, 32, .055) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(26, 28, 32, .055) 1px, transparent 1px);
+        linear-gradient(to right, rgba(26, 28, 32, .05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26, 28, 32, .05) 1px, transparent 1px);
     background-size: 46px 46px;
 }
 
@@ -199,158 +486,37 @@ main {
     50%      { transform: translate3d(60px, -70px, 0) scale(1.1); }
 }
 
-.hero-section .text {
+.intro-section .text {
     position: relative;
     z-index: 1;
     flex: 5;
 }
 
-/* Announcement badge */
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 7px 15px 7px 12px;
-    margin-bottom: 22px;
-    border: 1px solid rgba(74, 118, 238, .32);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .6);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    color: var(--text-color);
-    font-size: 13.5px;
-    font-weight: 600;
-    transition: transform .25s cubic-bezier(.2, .8, .2, 1), border-color .25s ease, box-shadow .25s ease;
-}
-
-.hero-badge:hover {
-    transform: translateY(-2px);
-    border-color: var(--link-color);
-    box-shadow: 0 8px 20px rgba(74, 118, 238, .18);
-}
-
-.hero-badge i {
-    font-size: 11px;
-    color: var(--link-color);
-    transition: transform .25s ease;
-}
-
-.hero-badge:hover i {
-    transform: translateX(3px);
-}
-
-.badge-dot {
-    position: relative;
-    width: 8px;
-    height: 8px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: var(--link-color);
-}
-
-.badge-dot::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: var(--link-color);
-    animation: dot-pulse 2.2s ease-out infinite;
-}
-
-@keyframes dot-pulse {
-    0%   { transform: scale(1); opacity: .7; }
-    100% { transform: scale(3.2); opacity: 0; }
-}
-
-.hero-section .text h2 {
-    font-size: clamp(32px, 5.2vw, 58px);
-    line-height: 1.12;
+.intro-section .text h2 {
+    font-size: clamp(27px, 3.4vw, 40px);
+    line-height: 1.15;
     letter-spacing: -.02em;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
 }
 
-/* Animated gradient name */
-.grad-text {
-    background: linear-gradient(100deg, var(--link-color), var(--accent-2) 42%, var(--accent-3) 68%, var(--link-color));
-    background-size: 250% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: grad-pan 7s linear infinite;
-}
-
-@keyframes grad-pan {
-    to { background-position: 250% 50%; }
-}
-
-.wave {
-    display: inline-block;
-    transform-origin: 70% 75%;
-    animation: wave 2.8s ease-in-out infinite;
-}
-
-@keyframes wave {
-    0%, 60%, 100% { transform: rotate(0deg); }
-    10%, 30%      { transform: rotate(14deg); }
-    20%, 40%      { transform: rotate(-8deg); }
-}
-
-.hero-section .text h4 {
-    font-size: clamp(16px, 1.55vw, 19px);
-    font-weight: 600;
-    line-height: 1.55;
-    max-width: 60ch;
-    margin-bottom: 20px;
-}
-
-/* Rotating word — grid cell stacking keeps the line from jumping */
-.rotator {
-    display: inline-grid;
-    vertical-align: bottom;
-    overflow: hidden;
-    /* main.js sets the width to the visible word so the rest of the
-       sentence stays tight against it */
-    transition: width .5s cubic-bezier(.2, .7, .2, 1);
-}
-
-.rotator-item {
-    grid-area: 1 / 1;
-    justify-self: start;
-    white-space: nowrap;
-    color: var(--link-color);
-    opacity: 0;
-    transform: translateY(100%);
-    transition: opacity .5s cubic-bezier(.2, .7, .2, 1), transform .5s cubic-bezier(.2, .7, .2, 1);
-}
-
-.rotator-item.is-active {
-    opacity: 1;
-    transform: none;
-}
-
-.rotator-item.is-leaving {
-    opacity: 0;
-    transform: translateY(-100%);
-}
-
-.hero-section .text p {
+.intro-section .text p {
     line-height: 1.75;
     color: #3d4048;
     max-width: 64ch;
 }
 
-.hero-section .text p + p {
+.intro-section .text p + p {
     margin-top: 16px;
 }
 
-.hero-section .text .links {
+.intro-section .text .links {
     display: flex;
     flex-wrap: wrap;
     gap: 11px;
     margin-top: 30px;
 }
 
-.hero-section .text .links a {
+.intro-section .text .links a {
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -368,7 +534,7 @@ main {
 }
 
 /* Shine sweep */
-.hero-section .text .links a::after {
+.intro-section .text .links a::after {
     content: '';
     position: absolute;
     top: 0;
@@ -380,17 +546,17 @@ main {
     transition: left .6s ease;
 }
 
-.hero-section .text .links a:hover {
+.intro-section .text .links a:hover {
     transform: translateY(-3px);
     border-color: var(--link-color);
     box-shadow: 0 10px 22px rgba(74, 118, 238, .22);
 }
 
-.hero-section .text .links a:hover::after {
+.intro-section .text .links a:hover::after {
     left: 140%;
 }
 
-.hero-section .headshot {
+.intro-section .headshot {
     position: relative;
     z-index: 1;
     flex: 2;
@@ -431,7 +597,7 @@ main {
     to { transform: rotate(1turn); }
 }
 
-.hero-section .headshot img {
+.intro-section .headshot img {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -923,17 +1089,28 @@ main {
     }
 
     main {
-        padding: 40px 30px;
+        --pad-x: 30px;
+        --pad-y: 40px;
     }
 
-    .hero-section {
+    /* The sidebar becomes a sticky top bar here, so the cover has to give
+       back its height or it pushes the fold off-screen. */
+    .cover {
+        min-height: calc(100svh - 58px);
+    }
+
+    .cover-actions a {
+        padding: 12px 20px;
+    }
+
+    .intro-section {
         min-height: auto;
     }
 }
 
 @media (max-width: 740px) {
     /* Section 1: Hero */
-    .hero-section {
+    .intro-section {
         flex-direction: column-reverse;
     }
 
@@ -957,7 +1134,8 @@ main {
 
 @media (max-width: 600px) {
     main {
-        padding: 30px 20px;
+        --pad-x: 20px;
+        --pad-y: 30px;
     }
 
     .sidebar {
@@ -1063,8 +1241,18 @@ main {
     }
 }
 
-/* Visually hidden, still read aloud by screen readers */
-.sr-only {
+/* The rotator needs JS to size itself to the visible word, so without JS
+   it stays hidden and the full phrase is shown as ordinary text instead.
+   With JS the two swap: rotator visible, phrase left for screen readers. */
+.rotator {
+    display: none;
+}
+
+.js-motion .rotator {
+    display: inline-grid;
+}
+
+.js-motion .roles-full {
     position: absolute;
     width: 1px;
     height: 1px;

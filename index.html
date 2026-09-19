@@ -81,8 +81,53 @@
     </nav>
 
     <main>
-        <!--SECTION 1: HERO/DESCRIPTION-->
-        <section class="hero-section">
+        <!--SECTION 1: COVER HERO-->
+        <section class="cover">
+            <div class="cover-media">
+                <!--Swap this one file for a photo to change the cover image-->
+                <img class="cover-img" src="images/seattle-skyline.svg"
+                     alt="The Seattle skyline at dusk, with the Space Needle lit against the water">
+            </div>
+            <div class="cover-scrim" aria-hidden="true"></div>
+
+            <div class="cover-content">
+                <a href="experience.html" class="cover-badge hero-in" style="--d: .15s">
+                    <span class="badge-dot"></span>
+                    <span>ECE @ University of Washington, Seattle</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <h1 class="hero-in" style="--d: .25s">Hi, I'm <span class="grad-text">Kyra</span> <span class="wave">&#128075;</span></h1>
+
+                <p class="cover-tagline hero-in" style="--d: .35s">Electrical and Computer Engineering Student spanning
+                    <!--Shown as-is without JS; becomes screen-reader-only once the
+                        rotator takes over, since that shows one word at a time-->
+                    <span class="roles-full">software, hardware, and embedded systems</span><span
+                        class="rotator" aria-hidden="true"><span
+                        class="rotator-item is-active">software</span><span
+                        class="rotator-item">hardware</span><span
+                        class="rotator-item">embedded systems</span></span>, drawn to customer-facing technical roles</p>
+
+                <div class="cover-actions hero-in" style="--d: .45s">
+                    <a href="projects.html" class="btn-primary">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>View my work</span>
+                    </a>
+                    <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span>Resume</span>
+                    </a>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-cue">
+                <span>Scroll</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!--SECTION 2: INTRO / ABOUT-->
+        <section id="about" class="intro-section">
             <!--Decorative drifting gradient backdrop-->
             <div class="hero-bg" aria-hidden="true">
                 <span class="blob blob-1"></span>
@@ -92,30 +137,15 @@
             </div>
 
             <div class="text">
-                <a href="experience.html" class="hero-badge hero-in" style="--d: .05s">
-                    <span class="badge-dot"></span>
-                    <span>ECE @ University of Washington, Seattle</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <h2>A bit about me</h2>
 
-                <h2 class="hero-in" style="--d: .14s">Hi, I'm <span class="grad-text">Kyra</span> <span class="wave">&#128075;</span></h2>
+                <p> I am a senior at the University of Washington, Seattle studying Electrical and Computer Engineering (ECE) with a focus in sensing and communications. What drives me most are roles that sit at the intersection of technical depth and customer interaction. I love working backwards from what a customer actually needs, then translating that into a real technical solution alongside them. Through hands-on projects and research in assistive and healthcare technologies, I have developed a strong foundation in software development, embedded systems, and signal processing.</p>
 
-                <h4 class="hero-in" style="--d: .22s">Electrical and Computer Engineering Student spanning
-                    <!--The rotator shows one word at a time, so screen readers get the full phrase instead-->
-                    <span class="sr-only">software, hardware, and embedded systems</span>
-                    <span class="rotator" aria-hidden="true">
-                        <span class="rotator-item is-active">software</span>
-                        <span class="rotator-item">hardware</span>
-                        <span class="rotator-item">embedded systems</span>
-                    </span>, drawn to customer-facing technical roles</h4>
+                <p> I am driven by opportunities where technical range, whether that's hardware, software, or embedded systems, meets direct customer interaction.</p>
 
-                <p class="hero-in" style="--d: .30s"> I am a senior at the University of Washington, Seattle studying Electrical and Computer Engineering (ECE) with a focus in sensing and communications. What drives me most are roles that sit at the intersection of technical depth and customer interaction. I love working backwards from what a customer actually needs, then translating that into a real technical solution alongside them. Through hands-on projects and research in assistive and healthcare technologies, I have developed a strong foundation in software development, embedded systems, and signal processing.</p>
+                <p>Outside of school you can find me playing NYT games (Pips superfan), trying new restaurants near me, or baking a viral recipe I found on TikTok.</p>
 
-                <p class="hero-in" style="--d: .36s"> I am driven by opportunities where technical range, whether that's hardware, software, or embedded systems, meets direct customer interaction.</p>
-
-                <p class="hero-in" style="--d: .42s">Outside of school you can find me playing NYT games (Pips superfan), trying new restaurants near me, or baking a viral recipe I found on TikTok.</p>
-
-                <div class="links hero-in" style="--d: .50s">
+                <div class="links">
                     <a href="internship.html">
                         <i class="fa-solid fa-briefcase"></i>
                         <span>Internship</span>
@@ -148,14 +178,13 @@
                 </div>
             </div>
 
-            <div class="headshot hero-in" style="--d: .28s">
+            <div class="headshot">
                 <div class="headshot-tilt">
                     <div class="headshot-frame">
                         <img src="images/Headshot.webp" alt="Kyra Dang headshot">
                     </div>
                 </div>
             </div>
-
         </section>
     </main>
 </body>

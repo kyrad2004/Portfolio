@@ -17,6 +17,10 @@
             '.skills-section .cells .cell',
             '.skills-section .certification',
             '.experience-section .entry',
+            '.intro-section .text h2',
+            '.intro-section .text p',
+            '.intro-section .text .links',
+            '.intro-section .headshot',
             '.project-detail-hero',
             '.project-detail .description',
             '.project-detail .project-actions',
@@ -55,6 +59,25 @@
         }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
 
         targets.forEach(function (el) { observer.observe(el); });
+
+        // The negative bottom rootMargin above means an element sitting in the
+        // last 10% of a page that can't scroll any further never intersects,
+        // and would stay invisible for good. Once we're at the bottom of the
+        // page, reveal whatever is left.
+        function revealRemainder() {
+            var atBottom = window.innerHeight + window.scrollY >=
+                           document.documentElement.scrollHeight - 2;
+            if (!atBottom) return;
+            targets.forEach(function (el) {
+                if (el.classList.contains('is-visible')) return;
+                el.classList.add('is-visible');
+                observer.unobserve(el);
+            });
+        }
+
+        window.addEventListener('scroll', revealRemainder, { passive: true });
+        window.addEventListener('resize', revealRemainder);
+        revealRemainder();
     }
 
     /* ---------------------------------------------------------------
@@ -116,7 +139,7 @@
        --------------------------------------------------------------- */
     function setupTilt() {
         var tilt = document.querySelector('.headshot-tilt');
-        var hero = document.querySelector('.hero-section');
+        var hero = document.querySelector('.intro-section');
         if (!tilt || !hero || reduceMotion) return;
         if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
@@ -169,8 +192,55 @@
         update();
     }
 
+    /* ---------------------------------------------------------------
+       Cover: drift the image slower than the page and fade the overlay
+       out as it scrolls away.
+       --------------------------------------------------------------- */
+    function setupCoverParallax() {
+        var cover = document.querySelector('.cover');
+        var media = document.querySelector('.cover-media');
+        if (!cover || !media || reduceMotion) return;
+
+        var content = cover.querySelector('.cover-content');
+        var cue = cover.querySelector('.scroll-cue');
+        var ticking = false;
+
+        // The cue fades in via a CSS animation, and a running animation
+        // outranks inline styles — so hand control back once it finishes,
+        // otherwise the scroll fade below would never apply.
+        if (cue) {
+            cue.addEventListener('animationend', function (e) {
+                if (e.target !== cue) return;   // the chevron's own loop bubbles up
+                cue.style.animation = 'none';
+                update();
+            });
+        }
+
+        function update() {
+            ticking = false;
+            var height = cover.offsetHeight || 1;
+            var y = Math.min(window.scrollY, height);
+
+            media.style.transform = 'translate3d(0, ' + (y * 0.32).toFixed(1) + 'px, 0)';
+
+            var fade = Math.max(0, 1 - y / (height * 0.6));
+            if (content) content.style.opacity = fade.toFixed(3);
+            if (cue) cue.style.opacity = Math.max(0, 1 - y / (height * 0.25)).toFixed(3);
+        }
+
+        window.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(update);
+        }, { passive: true });
+
+        window.addEventListener('resize', update);
+        update();
+    }
+
     setupReveal();
     setupRotator();
     setupTilt();
+    setupCoverParallax();
     setupScrollProgress();
 })();
