@@ -15,6 +15,9 @@
     <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
+    <!--Adds the motion hooks only when JS is on, so the page is fully visible without it-->
+    <script>document.documentElement.classList.add('js-motion');</script>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <!--SIDEBAR NAV-->
@@ -80,20 +83,39 @@
     <main>
         <!--SECTION 1: HERO/DESCRIPTION-->
         <section class="hero-section">
+            <!--Decorative drifting gradient backdrop-->
+            <div class="hero-bg" aria-hidden="true">
+                <span class="blob blob-1"></span>
+                <span class="blob blob-2"></span>
+                <span class="blob blob-3"></span>
+                <span class="hero-grid"></span>
+            </div>
+
             <div class="text">
-                <h2>Hi, I'm Kyra 👋</h2>
-                <h4>Electrical and Computer Engineering Student spanning software, hardware, and embedded systems, drawn to customer-facing technical roles</h4>
-                <p> I am a senior at the University of Washington, Seattle studying Electrical and Computer Engineering (ECE) with a focus in sensing and communications. What drives me most are roles that sit at the intersection of technical depth and customer interaction. I love working backwards from what a customer actually needs, then translating that into a real technical solution alongside them. Through hands-on projects and research in assistive and healthcare technologies, I have developed a strong foundation in software development, embedded systems, and signal processing.</p>
+                <a href="experience.html" class="hero-badge hero-in" style="--d: .05s">
+                    <span class="badge-dot"></span>
+                    <span>ECE @ University of Washington, Seattle</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
 
-                <p><br></p>
+                <h2 class="hero-in" style="--d: .14s">Hi, I'm <span class="grad-text">Kyra</span> <span class="wave">&#128075;</span></h2>
 
-                <p> I am driven by opportunities where technical range, whether that's hardware, software, or embedded systems, meets direct customer interaction.</p>
-                                
-                <p><br></p>
+                <h4 class="hero-in" style="--d: .22s">Electrical and Computer Engineering Student spanning
+                    <!--The rotator shows one word at a time, so screen readers get the full phrase instead-->
+                    <span class="sr-only">software, hardware, and embedded systems</span>
+                    <span class="rotator" aria-hidden="true">
+                        <span class="rotator-item is-active">software</span>
+                        <span class="rotator-item">hardware</span>
+                        <span class="rotator-item">embedded systems</span>
+                    </span>, drawn to customer-facing technical roles</h4>
 
-                <p>Outside of school you can find me playing NYT games (Pips superfan), trying new restaurants near me, or baking a viral recipe I found on TikTok.</p>
+                <p class="hero-in" style="--d: .30s"> I am a senior at the University of Washington, Seattle studying Electrical and Computer Engineering (ECE) with a focus in sensing and communications. What drives me most are roles that sit at the intersection of technical depth and customer interaction. I love working backwards from what a customer actually needs, then translating that into a real technical solution alongside them. Through hands-on projects and research in assistive and healthcare technologies, I have developed a strong foundation in software development, embedded systems, and signal processing.</p>
 
-                <div class="links">
+                <p class="hero-in" style="--d: .36s"> I am driven by opportunities where technical range, whether that's hardware, software, or embedded systems, meets direct customer interaction.</p>
+
+                <p class="hero-in" style="--d: .42s">Outside of school you can find me playing NYT games (Pips superfan), trying new restaurants near me, or baking a viral recipe I found on TikTok.</p>
+
+                <div class="links hero-in" style="--d: .50s">
                     <a href="internship.html">
                         <i class="fa-solid fa-briefcase"></i>
                         <span>Internship</span>
@@ -126,9 +148,12 @@
                 </div>
             </div>
 
-            <div class="headshot">
-                <img src="images/Headshot.webp" alt="Kyra Dang headshot">
-
+            <div class="headshot hero-in" style="--d: .28s">
+                <div class="headshot-tilt">
+                    <div class="headshot-frame">
+                        <img src="images/Headshot.webp" alt="Kyra Dang headshot">
+                    </div>
+                </div>
             </div>
 
         </section>
