@@ -238,9 +238,39 @@
         update();
     }
 
+    /* ---------------------------------------------------------------
+       Home page: the nav floats over the cover, then turns solid once
+       the cover has scrolled past.
+       --------------------------------------------------------------- */
+    function setupNavOverlay() {
+        if (!document.body.classList.contains('has-cover')) return;
+
+        var nav = document.querySelector('.topnav');
+        var cover = document.querySelector('.cover');
+        if (!nav || !cover) return;
+
+        var ticking = false;
+
+        function update() {
+            ticking = false;
+            var trigger = cover.offsetHeight - nav.offsetHeight;
+            nav.classList.toggle('is-stuck', window.scrollY > trigger);
+        }
+
+        window.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(update);
+        }, { passive: true });
+
+        window.addEventListener('resize', update);
+        update();
+    }
+
     setupReveal();
     setupRotator();
     setupTilt();
     setupCoverParallax();
+    setupNavOverlay();
     setupScrollProgress();
 })();

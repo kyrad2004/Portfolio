@@ -1,4 +1,7 @@
 :root {
+    /* Page gutter. The nav and the full-bleed cover both key off these. */
+    --pad-x: 50px;
+    --pad-y: 60px;
     --text-color: #1a1c20;
     --link-color: #4a76ee;
     --accent-2: #7c5cff;
@@ -20,6 +23,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color:  var(--background-color);
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -28,95 +32,188 @@ a {
     text-decoration: none;
 }
 
-/* SIDEBAR */
-.sidebar {
-    width: 240px;
-    flex-shrink: 0;
-    height: 100vh;
+/* TOP NAV
+   Colours are driven by tokens so the bar can flip between dark-on-light
+   (normal pages) and light-on-image (over the home page cover) without
+   restating every rule. */
+.topnav {
+    --nav-fg: var(--text-color);
+    --nav-hover-bg: rgba(0, 0, 0, .06);
+    --nav-active-bg: var(--text-color);
+    --nav-active-fg: var(--background-color);
+    --pill-bg: var(--text-color);
+    --pill-fg: var(--background-color);
+    --pill-shadow: none;
+
     position: sticky;
     top: 0;
-    align-self: flex-start;
+    z-index: 50;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    padding: 40px 30px;
-    border-right: 1px solid #d8d8d8;
+    gap: 24px;
+    padding: 13px var(--pad-x);
+    background-color: var(--background-color);
+    border-bottom: 1px solid #d8d8d8;
+    transition: background-color .3s ease, border-color .3s ease;
 }
 
-.sidebar-logo {
-    color: var(--text-color);
+.topnav-logo {
+    color: var(--nav-fg);
     font-size: 20px;
     font-weight: 600;
+    white-space: nowrap;
+    transition: color .3s ease, opacity .2s ease;
 }
 
-.sidebar-links {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.topnav-logo:hover {
+    opacity: .85;
 }
 
-.sidebar-links a {
+.topnav-links {
     display: flex;
     align-items: center;
-    gap: 12px;
-    color: var(--text-color);
-    font-size: 16px;
-    padding: 10px 14px;
-    border-radius: 6px;
-    transition: background-color .15s ease, color .15s ease;
+    gap: 3px;
 }
 
-.sidebar-links a i {
-    width: 18px;
-    text-align: center;
+.topnav-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    color: var(--nav-fg);
+    font-size: 14.5px;
+    white-space: nowrap;
+    transition: background-color .2s ease, color .3s ease;
 }
 
-.sidebar-links a:hover {
-    background-color: rgba(0, 0, 0, 0.06);
-    color: var(--link-color);
+.topnav-links a i {
+    font-size: .95em;
 }
 
-.sidebar-links a.active {
-    background-color: var(--text-color);
-    color: var(--background-color);
+.topnav-links a:hover {
+    background-color: var(--nav-hover-bg);
+}
+
+.topnav-links a.active {
+    background-color: var(--nav-active-bg);
+    color: var(--nav-active-fg);
     font-weight: 600;
 }
 
-.sidebar-social {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.sidebar-social a {
+.topnav-social {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: var(--text-color);
+    gap: 4px;
+}
+
+.topnav-social a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    color: var(--nav-fg);
+    font-size: 15px;
+    transition: background-color .2s ease, color .3s ease;
+}
+
+.topnav-social a:hover {
+    background-color: var(--nav-hover-bg);
+}
+
+/* Icon-only in the bar, but the label stays available to screen readers */
+.topnav-social a span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Resume takes hero-19's "Book Demo" slot: the one filled pill on the right */
+.topnav-social a[href="resume.pdf"] {
+    width: auto;
+    height: auto;
+    gap: 7px;
+    margin-left: 6px;
+    padding: 9px 18px;
+    background: var(--pill-bg);
+    color: var(--pill-fg);
+    box-shadow: var(--pill-shadow);
     font-size: 14px;
-    transition: color .15s ease;
+    font-weight: 600;
+    transition: background-color .25s ease, color .25s ease, transform .2s ease;
 }
 
-.sidebar-social a i {
-    width: 18px;
-    text-align: center;
+.topnav-social a[href="resume.pdf"] span {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
 }
 
-.sidebar-social a:hover {
-    color: var(--link-color);
+.topnav-social a[href="resume.pdf"]:hover {
+    background: var(--link-color);
+    color: #fff;
+}
+
+.topnav-social a[href="resume.pdf"]:active {
+    transform: scale(.96);
+}
+
+/* Home page: the bar floats over the cover image, then turns solid once
+   you scroll past it. Gated on .js-motion because main.js drives the
+   swap — without JS the bar stays an ordinary solid one. */
+.js-motion .has-cover .topnav {
+    --nav-fg: #fff;
+    --nav-hover-bg: rgba(255, 255, 255, .18);
+    --nav-active-bg: rgba(255, 255, 255, .22);
+    --nav-active-fg: #fff;
+    --pill-bg: #f4f4f5;
+    --pill-fg: #1e293b;
+    --pill-shadow: inset 0 2px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 0 rgba(0, 0, 0, .2);
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    border-bottom-color: transparent;
+    text-shadow: 0 1px 10px rgba(4, 8, 22, .45);
+}
+
+.js-motion .has-cover .topnav.is-stuck {
+    --nav-fg: var(--text-color);
+    --nav-hover-bg: rgba(0, 0, 0, .06);
+    --nav-active-bg: var(--text-color);
+    --nav-active-fg: var(--background-color);
+    --pill-bg: var(--text-color);
+    --pill-fg: var(--background-color);
+    --pill-shadow: none;
+
+    background-color: rgba(238, 239, 241, .88);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom-color: #d8d8d8;
+    text-shadow: none;
 }
 
 main {
-    /* The cover hero cancels these with negative margins to go full-bleed,
-       so keep them as tokens rather than hard-coding the padding twice. */
-    --pad-x: 50px;
-    --pad-y: 60px;
     flex: 1;
     min-width: 0;
     padding: var(--pad-y) var(--pad-x);
     /* The hero's blurred glow bleeds past the content box; clip it so it
        can't widen the page. `clip` rather than `hidden` so this never
-       becomes a scroll container and the sticky sidebar keeps working. */
+       becomes a scroll container and the sticky nav keeps working. */
     overflow-x: clip;
 }
 
@@ -367,6 +464,9 @@ main {
 
 /* Section 2: Intro / about */
 .intro-section {
+    /* Clears the fixed nav (65px at its tallest) when the scroll cue
+       jumps here, plus a little breathing room */
+    scroll-margin-top: 88px;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -1006,59 +1106,39 @@ main {
 
 
 @media (max-width: 900px) {
-    body {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: sticky;
-        top: 0;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-        border-right: none;
-        border-bottom: 1px solid #d8d8d8;
-        z-index: 10;
-        background-color: var(--background-color);
-    }
-
-    .sidebar-links {
-        flex-direction: row;
-        gap: 2px;
-    }
-
-    .sidebar-links a span {
-        display: none;
-    }
-
-    .sidebar-links a {
-        padding: 8px 10px;
-        font-size: 18px;
-    }
-
-    .sidebar-social {
-        flex-direction: row;
-        gap: 16px;
-    }
-
-    .sidebar-social a span {
-        display: none;
-    }
-
-    .sidebar-social a {
-        font-size: 18px;
-    }
-
-    main {
+    :root {
         --pad-x: 30px;
         --pad-y: 40px;
     }
 
-    /* The sidebar becomes a sticky top bar here, so the cover has to give
-       back its height or it pushes the fold off-screen. */
+    /* Ten labelled items will not fit, so the nav links go icon-only.
+       Hidden this way rather than with display:none so the link still has
+       an accessible name. */
+    .topnav-links a span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .topnav-links a {
+        position: relative;
+        padding: 9px 11px;
+        font-size: 16px;
+    }
+
+    .topnav-social a {
+        width: 34px;
+        height: 34px;
+    }
+
+    /* The nav is in flow here (it only overlays on the home page), so the
+       cover has to give back its height or it pushes the fold off-screen. */
     .cover {
         min-height: calc(100svh - 58px);
     }
@@ -1109,17 +1189,34 @@ main {
 }
 
 @media (max-width: 600px) {
-    main {
+    :root {
         --pad-x: 20px;
         --pad-y: 30px;
     }
 
-    .sidebar {
-        padding: 12px 15px;
+    .topnav {
+        gap: 10px;
+        padding: 11px var(--pad-x);
     }
 
-    .sidebar-logo {
+    .topnav-logo {
         font-size: 17px;
+    }
+
+    .topnav-links a {
+        padding: 8px 8px;
+    }
+
+    /* Not enough room for these next to six nav icons; they are still in
+       the page, in the intro section's link row. */
+    .topnav-social a:not([href="resume.pdf"]) {
+        display: none;
+    }
+
+    .topnav-social a[href="resume.pdf"] {
+        margin-left: 0;
+        padding: 8px 13px;
+        font-size: 13px;
     }
 
     /* Section 2: Skills */
@@ -1130,6 +1227,45 @@ main {
     .experience-section .entry-header {
         flex-direction: column;
         gap: 2px;
+    }
+}
+
+/* Six nav icons plus a labelled pill will not fit a small phone, so the
+   Resume button drops to an icon too. Measured: without this the bar needs
+   ~444px of a 390px screen. */
+@media (max-width: 430px) {
+    .topnav {
+        gap: 6px;
+    }
+
+    .topnav-logo {
+        font-size: 16px;
+    }
+
+    .topnav-links {
+        gap: 1px;
+    }
+
+    .topnav-links a {
+        padding: 8px 6px;
+    }
+
+    .topnav-social a[href="resume.pdf"] {
+        width: 34px;
+        height: 34px;
+        padding: 0;
+    }
+
+    .topnav-social a[href="resume.pdf"] span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
     }
 }
 
