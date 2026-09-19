@@ -153,7 +153,7 @@ main {
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center 62%;
+    object-position: center;
 }
 
 /* hero-19 runs no overlay at all, but its art is uniformly dark. This is a
@@ -163,13 +163,19 @@ main {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(100deg, rgba(6, 10, 28, .66) 0%, rgba(6, 10, 28, .3) 42%, rgba(6, 10, 28, 0) 74%),
-        linear-gradient(to bottom, rgba(6, 10, 28, .3) 0%, rgba(6, 10, 28, 0) 26%, rgba(6, 10, 28, .34) 100%);
+        linear-gradient(100deg, rgba(6, 10, 28, .72) 0%, rgba(6, 10, 28, .44) 36%, rgba(6, 10, 28, .08) 66%, rgba(6, 10, 28, 0) 82%),
+        linear-gradient(to bottom, rgba(6, 10, 28, .34) 0%, rgba(6, 10, 28, 0) 24%, rgba(6, 10, 28, .42) 100%);
 }
 
 .cover-content {
     position: relative;
     max-width: 44rem;
+    text-shadow: 0 1px 2px rgba(4, 8, 22, .38), 0 2px 16px rgba(4, 8, 22, .5);
+}
+
+/* The pill sits on its own light background, so it needs no shadow */
+.cover-content .btn-primary {
+    text-shadow: none;
 }
 
 /* Eyebrow — plain text with a trailing arrow, not a bordered chip */
@@ -333,6 +339,7 @@ main {
 }
 
 .scroll-cue {
+    text-shadow: 0 1px 2px rgba(4, 8, 22, .4), 0 2px 14px rgba(4, 8, 22, .5);
     position: absolute;
     right: var(--pad-x);
     bottom: 30px;
@@ -1071,6 +1078,13 @@ main {
 }
 
 @media (max-width: 740px) {
+    /* The narrow crop pushes the Space Needle out of frame at this width,
+       so bias the image left to keep it. Same idea as hero-19's
+       object-left / sm:object-center switch. */
+    .cover-img {
+        object-position: 22% center;
+    }
+
     /* Section 1: Hero */
     .intro-section {
         flex-direction: column-reverse;
